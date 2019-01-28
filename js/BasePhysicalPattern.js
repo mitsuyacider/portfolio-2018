@@ -26,9 +26,12 @@ export default class BasePhysicalPattern {
     this.topBodyList = []
     this.bottomBodyList = []
     this.wordDataList = []
-    this.screenWidth = this.isDebug ? window.innerWidth * 2 : window.screen.width * 2
-    this.screenHeight = this.isDebug ? window.innerHeight * 2 : window.screen.height * 2
+    this.screenWidth = canvas.width
+    this.screenHeight = canvas.height
     this.delegate = undefined
+
+    console.log("base >> " + canvas.width)
+
   }
 
   setDelegate (callback) {

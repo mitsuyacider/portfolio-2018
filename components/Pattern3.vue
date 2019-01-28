@@ -52,41 +52,38 @@ export default {
     minColor: {
       type: Number,
       default: config.minColor
+    },
+    canvasSize: {
+      type:Object
     }
   },
   data () {
     return {
-      gravityPattern: {}
-    }
-  },
-  computed: {
-    screenWidth () {
-      if (process.browser) {
-        // ここに window とか document を使った処理
-        return this.isDebug ? window.innerWidth * 2 : window.screen.width * 2
-      } else {
-        return 0
-      }
-    },
-    screenHeight () {
-      if (process.browser) {
-        return this.isDebug ? window.innerHeight * 2 : window.screen.height * 2
-      } else {
-        return 0
-      }
+      gravityPattern: {},
+      screenWidth: 0,
+      screenHeight: 0
     }
   },
   beforeDestroy () {
     // NOTE: Stop rendering
     this.gravityPattern.stopAnimation()
   },
-  mounted () {
-    const canvas = document.getElementById('pattern3Canvas')
-    this.gravityPattern = new MultiGravityPattern(canvas)
-    this.gravityPattern.setDelegate(this.callbackOnClick)
+  mounted () {    
+    if (process.browser) {
+      // ここに window とか document を使った処理
+
+    } 
+
   },
   methods: {
     initialize (data) {
+      const canvas = document.getElementById('pattern3Canvas')
+      this.screenWidth = this.canvasSize.width * 2 - 20
+      this.screenHeight = 1800
+      canvas.width = this.screenWidth
+      canvas.height = this.screenHeight
+      this.gravityPattern = new MultiGravityPattern(canvas)
+      this.gravityPattern.setDelegate(this.callbackOnClick)
       this.gravityPattern.initialize(data)
     },
     callbackOnClick (info) {

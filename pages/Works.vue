@@ -1,39 +1,33 @@
 <template>
 <div class="main-container d-md-flex">
-  <div class="menu-nav col-md-2 border d-none d-md-block">
+  <div class="nav-main col-md-2 pl-4">
     <ul>
-      <li><a href="https://vuejs.org" target="_blank"
-        class="btn btn-primary">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank"
-        class="btn btn-success">Forum</a></li>
-      <li><a href="https://gitter.im/vuejs/vue" target="_blank"
-        class="btn btn-danger">Gitter Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank"
-        class="btn btn-dark">Twitter</a></li>
+        <li v-for="(index, work) in works" :key=work.name>
+            <button v-on:click="loadData(1)"> {{ index }} {{ work.name }}</button>
+        </li>
     </ul>
   </div>
   <div class="mb-container border d-block d-md-none">
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank"
-        class="btn btn-primary">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank"
-        class="btn btn-success">Forum</a></li>
-      <li><a href="https://gitter.im/vuejs/vue" target="_blank"
-        class="btn btn-danger">Gitter Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank"
-        class="btn btn-dark">Twitter</a></li>
-    </ul>
+    <div>
+      <b-dropdown id="ddown1" text="Dropdown Button" class="m-md-2">
+        <b-dropdown-item>First Action</b-dropdown-item>
+        <b-dropdown-item>Second Action</b-dropdown-item>
+        <b-dropdown-item>Third Action</b-dropdown-item>
+        <b-dropdown-divider></b-dropdown-divider>
+        <b-dropdown-item>Something else here...</b-dropdown-item>
+        <b-dropdown-item disabled>Disabled action</b-dropdown-item>
+      </b-dropdown>
+    </div>
   </div>
-  <div class="col-md-10 col-xs-12">
+  <div ref="project" class="project-container col-md-10 col-xs-12">
     <pattern-1 ref="pattern" v-if="animationPattern === 1" v-on:callbackOnWordClick=onWordClick />
     <pattern-2 ref="pattern" v-else-if="animationPattern === 2" v-on:callbackOnWordClick=onWordClick />
-    <pattern-3 ref="pattern" v-else-if="animationPattern === 3" v-on:callbackOnWordClick=onWordClick />
+    <pattern-3 :canvasSize=canvasSize ref="pattern" v-else-if="animationPattern === 3" v-on:callbackOnWordClick=onWordClick />
   </div>
 </div>
 </template>
 
 <script>
-
 import NativeCommunicator from '@/js/NativeCommunicator'
 import Pattern1 from '@/components/Pattern1'
 import Pattern2 from '@/components/Pattern2'
@@ -54,7 +48,15 @@ export default {
       animationPattern: 3,
       column: 12,
       sentenceList: [],
-      wordDataList: []
+      wordDataList: [],
+      works: [{name: 'Media Art Festival'},
+      {name: 'Media Art Festival'},
+      {name: 'Media Art Festival'},
+      {name: 'Media Art Festival'}],
+      canvasSize: {
+        width: 0,
+        height:0
+      }
     }
   },
   components: {
@@ -64,6 +66,8 @@ export default {
     LaneContainer
   },
   mounted () {
+    console.log(this.$refs.project.clientWidth)
+    this.canvasSize.width = this.$refs.project.clientWidth
     if (this.isDebug) {
       // const id = Math.floor(Math.random() * 28) + 1
       // const id = 28
@@ -95,9 +99,9 @@ export default {
       // }).catch((e) => {
       //   console.log(e)
       // })
-
       const wordsPath = '/words/' + idPrefix + '-words.csv'
       csvLoader.loadData(wordsPath).then((data) => {
+      console.log(data)
         self.wordDataList = data
         self.$refs.pattern.initialize(data)
       }).catch((e) => {

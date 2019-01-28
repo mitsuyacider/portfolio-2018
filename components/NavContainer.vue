@@ -6,12 +6,13 @@
       <!-- ブランド名 -->
       <router-link class="navbar-brand" to="/">Mitsuya WATANABE<span class="sr-only">(current)</span></router-link>
 
-      <!-- 切り替えボタン -->
-      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target=
-      "#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label=
-      "Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <div>
+        <b-dropdown id="ddown1" text="Menu" class="d-block d-md-none">
+          <b-dropdown-item>Works</b-dropdown-item>
+          <b-dropdown-item>About</b-dropdown-item>
+          <b-dropdown-item>Contact</b-dropdown-item>
+        </b-dropdown>
+      </div>
 
       <!-- ナビゲーション -->
       <div class="collapse navbar-collapse" id="navbar-content">
@@ -20,18 +21,13 @@
             <nuxt-link to="/">Works</nuxt-link>
           </li>
           <li class="nav-item">
-            <!-- <a href="/about" class="nav-link">About</a> -->
             <nuxt-link to="/about">About</nuxt-link>
           </li>
-        </ul>
-
-        <!-- 右側メニュー : Contactページへのリンク -->
-        <ul class="navbar-nav">
-          <li class="nav-item nav-link btn btn-info">
+          <li class="nav-item">
             <router-link to="/contact">Contact</router-link>
           </li>
         </ul>
-      </div><!-- /ナビゲーション -->
+      </div> <!-- /ナビゲーション -->
 
     </div><!-- /サブコンテナ -->
   </nav>
@@ -41,6 +37,10 @@
 .nav-item a {
   color: white;
   margin-left: 10px;  
+}
+
+.navbar-nav {
+  width: 100%;
 }
 
 </style>
