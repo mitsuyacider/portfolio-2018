@@ -1,0 +1,13 @@
+{
+  "createDuration": 100,
+  "restitution": 0.9,
+  "friction": 0.01,
+  "density": 1,
+  "frictionAir": 0,
+  "isDebug": false,
+  "resetInterval": 25000,
+  "expandRate": 1.108,
+  "maxFontSize": 120,
+  "minFontSize": 48,
+  "minColor": 170
+}

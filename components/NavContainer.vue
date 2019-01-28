@@ -1,6 +1,6 @@
 <template>
   <!-- ナビゲーション -->
-  <nav class="navbar navbar-expand-xl navbar-dark sticky-top">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
     <!-- サブコンテナ -->
     <div class="container border">
       <!-- ブランド名 -->
@@ -14,16 +14,14 @@
       </button>
 
       <!-- ナビゲーション -->
-      <div class="collapse navbar-collapse border" id="navbar-content">
+      <div class="collapse navbar-collapse" id="navbar-content">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <router-link to="/">Top</router-link>
+          <li class="nav-item">
+            <nuxt-link to="/">Works</nuxt-link>
           </li>
           <li class="nav-item">
-            <a href="/about-container" class="nav-link">About</a>
-          </li>
-          <li class="nav-item">
-            <a href="/#works" class="nav-link">Works</a>
+            <!-- <a href="/about" class="nav-link">About</a> -->
+            <nuxt-link to="/about">About</nuxt-link>
           </li>
         </ul>
 
@@ -39,7 +37,10 @@
   </nav>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+.nav-item a {
+  color: white;
+  margin-left: 10px;  
+}
 
 </style>
-

@@ -1,16 +1,19 @@
 <template>
-  <section class="container">
+  <div class="main-container">
     <nav-container />
-  </section>
+    <works />
+  </div>
 </template>
 
 <script>
 import Logo from '~/components/Logo.vue'
 import NavContainer from '@/components/NavContainer'
+import Works from '@/pages/Works'
 
 export default {
   components: {
-    NavContainer
+    NavContainer,
+    Works
   }
 }
 </script>

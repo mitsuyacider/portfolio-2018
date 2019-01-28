@@ -1,0 +1,8 @@
+{
+  "column": 9,
+  "lineSpace": 16,
+  "maxSpeed": 60,
+  "minSpeed": 10,
+  "isDebug": false,
+  "fontColor": "rgba(255,255,255,0.25)"
+}
