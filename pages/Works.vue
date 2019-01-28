@@ -2,8 +2,8 @@
 <div class="main-container d-md-flex">
   <div class="nav-main col-md-2 pl-4  d-none d-md-block">
     <ul>
-        <li v-for="(index, work) in works" :key=work.name>
-            <button v-on:click="loadData(1)"> {{ index }} {{ work.name }}</button>
+        <li v-for="(work, index) in works" :key=work.name>
+            <button v-on:click="loadData(1)"> {{ work.name }} + {{index}}</button>
         </li>
     </ul>
   </div>
@@ -31,6 +31,7 @@ import Pattern2 from '@/components/Pattern2'
 import Pattern3 from '@/components/Pattern3'
 import LaneContainer from '@/components/LaneContainer'
 import csvLoader from '@/js/CSVLoader.js'
+import data from '@/assets/data/data.json'
 
 export default {
   name: 'App',
@@ -46,10 +47,7 @@ export default {
       column: 12,
       sentenceList: [],
       wordDataList: [],
-      works: [{name: 'Media Art Festival'},
-      {name: 'Media Art Festival'},
-      {name: 'Media Art Festival'},
-      {name: 'Media Art Festival'}],
+      works: data,
       canvasSize: {
         width: 0,
         height:0
@@ -62,8 +60,7 @@ export default {
     Pattern3,
     LaneContainer
   },
-  mounted () {
-    console.log(this.$refs.project.clientWidth)
+  mounted () {    
     this.canvasSize.width = this.$refs.project.clientWidth
   },
   methods: {
