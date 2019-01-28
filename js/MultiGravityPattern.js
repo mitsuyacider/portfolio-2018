@@ -27,7 +27,6 @@ export default class MultiGravityPattern extends BasePhysicalPattern {
     const needBottomBody = true
     super.initialize(data, needBottomBody)
 
-    console.log("multigravity >> " + this.screenWidth)
     // NOTE: Create walls
     const World = Matter.World
     const Bodies = Matter.Bodies

@@ -73,7 +73,6 @@ export default {
       // ここに window とか document を使った処理
 
     } 
-
   },
   methods: {
     initialize (data) {
@@ -96,6 +95,6 @@ export default {
 
 <style lang="scss" scoped>
 .main-container {
-  background: red;
+  // background: red;
 }
 </style>

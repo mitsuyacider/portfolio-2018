@@ -6,12 +6,19 @@
       <!-- ブランド名 -->
       <router-link class="navbar-brand" to="/">Mitsuya WATANABE<span class="sr-only">(current)</span></router-link>
 
-      <div>
-        <b-dropdown id="ddown1" text="Menu" class="d-block d-md-none">
-          <b-dropdown-item>Works</b-dropdown-item>
-          <b-dropdown-item>About</b-dropdown-item>
-          <b-dropdown-item>Contact</b-dropdown-item>
-        </b-dropdown>
+      <div class="d-md-none d-flex">
+        <b-btn class="ml-2" v-b-toggle.collapse1 variant="primary">Works</b-btn>
+        <b-btn class="ml-2" v-b-toggle variant="primary">About</b-btn>
+        <b-btn class="ml-2" v-b-toggle variant="primary">Contact</b-btn>
+        <b-collapse id="collapse1" class="mt-2">
+          <b-card>
+            <p class="card-text">Collapse contents Here</p>
+            <b-btn v-b-toggle.collapse1_inner >Toggle Inner Collapse</b-btn>
+            <b-collapse id=collapse1_inner class="mt-2">
+              <b-card>Hello!</b-card>
+            </b-collapse>
+          </b-card>
+        </b-collapse>
       </div>
 
       <!-- ナビゲーション -->

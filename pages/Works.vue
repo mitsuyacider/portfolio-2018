@@ -1,6 +1,6 @@
 <template>
 <div class="main-container d-md-flex">
-  <div class="nav-main col-md-2 pl-4">
+  <div class="nav-main col-md-2 pl-4  d-none d-md-block">
     <ul>
         <li v-for="(index, work) in works" :key=work.name>
             <button v-on:click="loadData(1)"> {{ index }} {{ work.name }}</button>
@@ -9,13 +9,10 @@
   </div>
   <div class="mb-container border d-block d-md-none">
     <div>
-      <b-dropdown id="ddown1" text="Dropdown Button" class="m-md-2">
+      <b-dropdown id="ddown1" text="Works" class="m-md-2">
         <b-dropdown-item>First Action</b-dropdown-item>
         <b-dropdown-item>Second Action</b-dropdown-item>
         <b-dropdown-item>Third Action</b-dropdown-item>
-        <b-dropdown-divider></b-dropdown-divider>
-        <b-dropdown-item>Something else here...</b-dropdown-item>
-        <b-dropdown-item disabled>Disabled action</b-dropdown-item>
       </b-dropdown>
     </div>
   </div>
@@ -68,11 +65,6 @@ export default {
   mounted () {
     console.log(this.$refs.project.clientWidth)
     this.canvasSize.width = this.$refs.project.clientWidth
-    if (this.isDebug) {
-      // const id = Math.floor(Math.random() * 28) + 1
-      // const id = 28
-      // this.loadData(id)
-    }
   },
   methods: {
     zeroPadding (num, length) {
@@ -92,13 +84,6 @@ export default {
     loadData (id) {
       const self = this
       const idPrefix = this.zeroPadding(id, 2)
-      // const sentencesPath = '/sentences/' + idPrefix + '-sentences.csv'
-      // csvLoader.loadData(sentencesPath).then((data) => {
-      //   self.sentenceList = data
-      //   self.$refs.laneContainer.initialize(data)
-      // }).catch((e) => {
-      //   console.log(e)
-      // })
       const wordsPath = '/words/' + idPrefix + '-words.csv'
       csvLoader.loadData(wordsPath).then((data) => {
       console.log(data)
