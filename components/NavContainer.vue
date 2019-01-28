@@ -2,7 +2,7 @@
   <!-- ナビゲーション -->
   <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
     <!-- サブコンテナ -->
-    <div class="container border">
+    <div class="container">
       <!-- ブランド名 -->
       <router-link class="navbar-brand" to="/">Mitsuya WATANABE<span class="sr-only">(current)</span></router-link>
 

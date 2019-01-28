@@ -1,14 +1,30 @@
 <template>
-<div class="main-container">
-  <div class="menu-nav col-md-2">      
+<div class="main-container d-md-flex">
+  <div class="menu-nav col-md-2 border d-none d-md-block">
     <ul>
-      <li>works</li>
-      <li>works</li>
-      <li>works</li>
-      <li>works</li>
+      <li><a href="https://vuejs.org" target="_blank"
+        class="btn btn-primary">Core Docs</a></li>
+      <li><a href="https://forum.vuejs.org" target="_blank"
+        class="btn btn-success">Forum</a></li>
+      <li><a href="https://gitter.im/vuejs/vue" target="_blank"
+        class="btn btn-danger">Gitter Chat</a></li>
+      <li><a href="https://twitter.com/vuejs" target="_blank"
+        class="btn btn-dark">Twitter</a></li>
     </ul>
   </div>
-  <div class="menu-nav col-md-10">
+  <div class="mb-container border d-block d-md-none">
+    <ul>
+      <li><a href="https://vuejs.org" target="_blank"
+        class="btn btn-primary">Core Docs</a></li>
+      <li><a href="https://forum.vuejs.org" target="_blank"
+        class="btn btn-success">Forum</a></li>
+      <li><a href="https://gitter.im/vuejs/vue" target="_blank"
+        class="btn btn-danger">Gitter Chat</a></li>
+      <li><a href="https://twitter.com/vuejs" target="_blank"
+        class="btn btn-dark">Twitter</a></li>
+    </ul>
+  </div>
+  <div class="col-md-10 col-xs-12">
     <pattern-1 ref="pattern" v-if="animationPattern === 1" v-on:callbackOnWordClick=onWordClick />
     <pattern-2 ref="pattern" v-else-if="animationPattern === 2" v-on:callbackOnWordClick=onWordClick />
     <pattern-3 ref="pattern" v-else-if="animationPattern === 3" v-on:callbackOnWordClick=onWordClick />
@@ -50,8 +66,8 @@ export default {
   mounted () {
     if (this.isDebug) {
       // const id = Math.floor(Math.random() * 28) + 1
-      const id = 28
-      this.loadData(id)
+      // const id = 28
+      // this.loadData(id)
     }
   },
   methods: {
@@ -93,3 +109,13 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.menu-nav {  
+  height: 100vh;
+}
+
+.mb-container {
+  width: 100vw;
+}
+</style>
