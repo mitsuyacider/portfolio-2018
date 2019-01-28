@@ -7,15 +7,6 @@
         </li>
     </ul>
   </div>
-  <div class="mb-container border d-block d-md-none">
-    <div>
-      <b-dropdown id="ddown1" text="Works" class="m-md-2">
-        <b-dropdown-item>First Action</b-dropdown-item>
-        <b-dropdown-item>Second Action</b-dropdown-item>
-        <b-dropdown-item>Third Action</b-dropdown-item>
-      </b-dropdown>
-    </div>
-  </div>
   <div ref="project" class="project-container col-md-10 col-xs-12">
     <pattern-1 ref="pattern" v-if="animationPattern === 1" v-on:callbackOnWordClick=onWordClick />
     <pattern-2 ref="pattern" v-else-if="animationPattern === 2" v-on:callbackOnWordClick=onWordClick />

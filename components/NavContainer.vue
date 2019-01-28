@@ -6,17 +6,17 @@
       <!-- ブランド名 -->
       <router-link class="navbar-brand" to="/">Mitsuya WATANABE<span class="sr-only">(current)</span></router-link>
 
-      <div class="d-md-none d-flex">
-        <b-btn class="ml-2" v-b-toggle.collapse1 variant="primary">Works</b-btn>
+      <div class="d-md-none container pl-0 pr-0">
+        <b-btn v-b-toggle.collapse1 variant="primary">Works</b-btn>
         <b-btn class="ml-2" v-b-toggle variant="primary">About</b-btn>
-        <b-btn class="ml-2" v-b-toggle variant="primary"><a href="mailto:mitsuya.watanabe85@gmail.com">Contact</a></b-btn>
-        <b-collapse id="collapse1" class="mt-2">
+        <a href="mailto:mitsuya.watanabe85@gmail.com"><b-btn class="ml-2" v-b-toggle variant="primary">Contact</b-btn></a>
+        <b-collapse v-model="showCollapse" id="collapse1" class="w-100 mt-2">
           <b-card>
-            <p class="card-text">Collapse contents Here</p>
-            <b-btn v-b-toggle.collapse1_inner >Toggle Inner Collapse</b-btn>
-            <b-collapse id=collapse1_inner class="mt-2">
-              <b-card>Hello!</b-card>
-            </b-collapse>
+            <ul>
+                <li v-for="(work, index) in works" :key=work.name>
+                    <button @click="tappedWork(work)"> {{ work.name }} + {{index}}</button>
+                </li>
+            </ul>
           </b-card>
         </b-collapse>
       </div>
@@ -39,6 +39,32 @@
     </div><!-- /サブコンテナ -->
   </nav>
 </template>
+
+<script>
+import data from '@/assets/data/data.json'
+
+export default {
+  name: 'App',
+  props: {
+    isDebug: {
+      type: Boolean,
+      default: true
+    }
+  },
+  data () {
+    return {      
+      works: data,
+      showCollapse: false
+    }
+  },
+  methods: {
+    tappedWork (work) {
+      this.showCollapse = false
+      this.$emit('tappedWork', work)
+    }
+  }
+}
+</script>
 
 <style lang="scss" scoped>
 .nav-item a {

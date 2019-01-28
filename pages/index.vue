@@ -1,6 +1,6 @@
 <template>
   <div class="main-container">
-    <nav-container />
+    <nav-container v-on:tappedWork="onTapWork" />
     <works />
   </div>
 </template>
@@ -14,6 +14,11 @@ export default {
   components: {
     NavContainer,
     Works
+  },
+  methods: {
+    onTapWork (work) {
+      console.log(work.name)
+    }
   }
 }
 </script>
