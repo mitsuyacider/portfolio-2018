@@ -9,7 +9,7 @@
       <div class="d-md-none d-flex">
         <b-btn class="ml-2" v-b-toggle.collapse1 variant="primary">Works</b-btn>
         <b-btn class="ml-2" v-b-toggle variant="primary">About</b-btn>
-        <b-btn class="ml-2" v-b-toggle variant="primary">Contact</b-btn>
+        <b-btn class="ml-2" v-b-toggle variant="primary"><a href="mailto:mitsuya.watanabe85@gmail.com">Contact</a></b-btn>
         <b-collapse id="collapse1" class="mt-2">
           <b-card>
             <p class="card-text">Collapse contents Here</p>
@@ -31,7 +31,7 @@
             <nuxt-link to="/about">About</nuxt-link>
           </li>
           <li class="nav-item">
-            <router-link to="/contact">Contact</router-link>
+            <a href="mailto:mitsuya.watanabe85@gmail.com">Contact</a>
           </li>
         </ul>
       </div> <!-- /ナビゲーション -->
