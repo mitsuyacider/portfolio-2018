@@ -68,6 +68,7 @@ export default {
     // NOTE: Stop rendering
     if (this.gravityPattern !== undefined) {
       this.gravityPattern.stopAnimation()
+      this.gravityPattern.deleteAllBodyData()
     }
   },
   mounted () {    
@@ -78,11 +79,18 @@ export default {
   },
   methods: {
     initialize (data) {
+
       const canvas = document.getElementById('pattern3Canvas')
       this.screenWidth = this.canvasSize.width * 2 - 20
       this.screenHeight = 1800
       canvas.width = this.screenWidth
       canvas.height = this.screenHeight
+      if (this.gravityPattern !== undefined) {
+        this.gravityPattern.stopAnimation()
+        this.gravityPattern.deleteAllBodyData()
+        this.gravityPattern = undefined;
+      }
+
       this.gravityPattern = new MultiGravityPattern(canvas)
       this.gravityPattern.setDelegate(this.callbackOnClick)
       this.gravityPattern.initialize(data)

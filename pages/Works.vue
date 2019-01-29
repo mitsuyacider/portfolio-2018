@@ -51,13 +51,6 @@ export default {
     this.canvasSize.width = this.$refs.project.clientWidth
   },
   methods: {
-    onButtonClick (tag) {
-      this.$refs.laneContainer.killAllAnimation()
-      this.$refs.laneContainer.deleteChildren()
-      this.animationPattern = tag
-      this.$refs.laneContainer.initialize(this.sentenceList)
-      this.$refs.pattern.initialize(this.wordDataList)
-    },
     onWordClick (info) {
       NativeCommunicator.postWordData(info)
     },

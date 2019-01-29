@@ -18,7 +18,8 @@
     "cross-env": "^5.2.0",
     "matter-js": "^0.14.2",
     "nuxt": "^2.3.4",
-    "nuxt-sass-resources-loader": "^2.0.5"
+    "nuxt-sass-resources-loader": "^2.0.5",
+    "p5": "^0.7.3"
   },
   "devDependencies": {
     "node-sass": "^4.11.0",

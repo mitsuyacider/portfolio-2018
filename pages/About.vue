@@ -3,8 +3,8 @@
   <nav-container />
     
   <div class="d-md-flex">
-    <div class="left-container col-md-6">
-
+    <div class="left-container col-md-6 d-flex d-flex justify-content-center align-items-center">
+      <div class="canvas-container" id="p5Canvas"></div>
     </div>
     <div class="container right-container col-md-6 p-5">
       <h2>Mitsuya WATANABE</h2>
@@ -53,6 +53,12 @@
     // background-color: black;
   }
 }
+
+.canvas-container {
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+}
 </style>
 
 <script>
@@ -61,6 +67,19 @@ import NavContainer from '@/components/NavContainer'
 export default {
   components: {
     NavContainer
+  },
+  mounted () {
+    if (process.browser) {
+      var radar = require('@/js/Radar.js')
+      const P5 = require('p5')
+      new P5(radar.main)
+    }
+
+    // const P5 = require('p5')
+    // new P5(radar.main)
+
+    // // NOTE: p5.jsからのコールバックを受け取る
+    // radar.setDelegate(this.callbackOnP5);
   }
 }
 </script>

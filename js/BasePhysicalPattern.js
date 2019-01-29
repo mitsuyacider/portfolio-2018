@@ -36,8 +36,7 @@ export default class BasePhysicalPattern {
     this.delegate = callback
   }
 
-  initialize (data, needBottomBody) {
-    this.wordDataList = data
+  deleteAllBodyData () {
     // NOTE: Delete from world if exist
     const bodies = Matter.Composite.allBodies(this.engine.world)
     for (let i = 0; i < bodies.length; i += 1) {
@@ -45,7 +44,14 @@ export default class BasePhysicalPattern {
       Matter.Composite.remove(this.engine.world, part)
     }
     this.topBodyList = []
-    this.bottomBodyList = []
+    this.bottomBodyList = []    
+  }
+
+  initialize (data, needBottomBody) {
+    this.wordDataList = data
+    
+    // NOTE: Delete from world if exist
+    this.deleteAllBodyData()
 
     const maxSize = Math.max(...data.map(m => m[1]))
     const minSize = Math.min(...data.map(m => m[1]))
@@ -80,6 +86,7 @@ export default class BasePhysicalPattern {
   stopAnimation () {
     // NOTE: Stop rendering
     window.cancelAnimationFrame(this.animationId)
+    // Events.on(this.engine, 'beforeUpdate', this.matterBeforeUpdate.bind(this))
   }
 
   matterBeforeUpdate (event) {}

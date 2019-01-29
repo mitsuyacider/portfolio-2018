@@ -30,7 +30,6 @@ export default class MultiGravityPattern extends BasePhysicalPattern {
     // NOTE: Create walls
     const World = Matter.World
     const Bodies = Matter.Bodies
-    console.log(this.screenWidth)
     const circleSize = this.screenWidth / 8
     const ground = Bodies.rectangle(this.screenWidth / 2, this.screenHeight, this.screenWidth, 2, { isStatic: true })
     const leftWall = Bodies.rectangle(0, 0, 2, this.screenHeight * 2, { isStatic: true })
@@ -39,12 +38,26 @@ export default class MultiGravityPattern extends BasePhysicalPattern {
     this.staticCircle = Bodies.circle(this.screenWidth / 2, this.screenHeight / 2, circleSize, {isStatic: true})
     World.add(this.engine.world, [upWall, ground, leftWall, rightWall, this.staticCircle])
 
+    const Events = Matter.Events
+    Events.on(this.engine, 'beforeUpdate', this.matterBeforeUpdate.bind(this))
+
     this.render()
 
     // NOTE: resetInterval後に円を肥大化させる。
     window.setTimeout(() => {
       this.shouldExpand = true
     }, this.resetInterval)
+  }
+
+  deleteAllBodyData () {
+    super.deleteAllBodyData()
+
+    Matter.Events.off(this.engine)
+    const bodies = Matter.Composite.allBodies(this.engine.world)
+    if (bodies.length > 0) {
+      Matter.World.clear(this.engine, false)    
+    }
+    Matter.Engine.clear(this.engine)
   }
 
   matterBeforeUpdate (event) {
@@ -63,6 +76,7 @@ export default class MultiGravityPattern extends BasePhysicalPattern {
       if (this.staticCircle.circleRadius > maxRadius * 4) {
         this.shouldExpand = false
 
+        console.log("** multigenerator matter update")
         this.stopAnimation()
         this.initialize(this.wordDataList)
       }
