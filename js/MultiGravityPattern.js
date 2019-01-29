@@ -30,7 +30,8 @@ export default class MultiGravityPattern extends BasePhysicalPattern {
     // NOTE: Create walls
     const World = Matter.World
     const Bodies = Matter.Bodies
-    const circleSize = this.screenWidth / 4
+    console.log(this.screenWidth)
+    const circleSize = this.screenWidth / 8
     const ground = Bodies.rectangle(this.screenWidth / 2, this.screenHeight, this.screenWidth, 2, { isStatic: true })
     const leftWall = Bodies.rectangle(0, 0, 2, this.screenHeight * 2, { isStatic: true })
     const rightWall = Bodies.rectangle(this.screenWidth, 0, 2, this.screenHeight * 2, { isStatic: true })

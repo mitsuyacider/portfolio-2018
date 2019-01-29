@@ -17,7 +17,6 @@ export default {
   },
   methods: {
     onTapWork (work) {
-      console.log(work.name)
     }
   }
 }

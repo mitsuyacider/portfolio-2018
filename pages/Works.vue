@@ -59,7 +59,6 @@ export default {
       this.$refs.pattern.initialize(this.wordDataList)
     },
     onWordClick (info) {
-      console.log('Tapped Word: ' + JSON.stringify(info))
       NativeCommunicator.postWordData(info)
     },
     onClickWork (work) {
@@ -69,7 +68,6 @@ export default {
       const self = this
       const wordsPath = '/words/' + preFileName + '-words.csv'
       csvLoader.loadData(wordsPath).then((data) => {
-      console.log(data)
         self.wordDataList = data
         self.$refs.pattern.initialize(data)
       }).catch((e) => {

@@ -72,7 +72,6 @@ export default class LaneService {
     let colorVal = Math.floor(MathUtils.map(size, this.minSize, this.maxSize, this.minColor, 255))
     const color = 'rgb(' + colorVal + ',' + colorVal + ',' + colorVal + ')'
 
-    console.log(color + ' /word: ' + data[0])
     const wordData = {}
     wordData.word = data[0]
     wordData.size = val

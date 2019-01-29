@@ -2,14 +2,57 @@
 <div class="main-container">
   <nav-container />
     
-  <div class="container">
-    <h2>BIOGRAPHY</h2>
+  <div class="d-md-flex">
+    <div class="left-container col-md-6">
+
+    </div>
+    <div class="container right-container col-md-6 p-5">
+      <h2>Mitsuya WATANABE</h2>
+      <p class="right-container__passage text-justify mt-5">
+         I am IMitusya Watanabe from Japan. 
+         I am working as a Web & Mobile Application Developer 
+         at <a href="https://gocco.co.jp/">GOCCO.</a>
+      </p>
+      <p class="right-container__passage text-justify">
+        I have engaged in system development centered on iOS 
+        and developed applications combined with cutting-edge technologies 
+        such as Bluetooth/iBeacon, voice recognition, ARKit and machine learning. 
+        I have, therefore, deep knowledge and experiences with the innovative use of 
+        technology. Furthermore, in recent years, development on the web applications 
+        has also been entrusted.
+      </p>
+      <p class="right-container__passage text-justify">
+        Since I have precise insights about the advantage and disadvantage 
+        between web applications and mobile applications, I could present optimal 
+        solutions considering system construction and usability at fast-paced development 
+        to your team.
+      </p>
+      <p class="right-container__passage text-justify">
+        If you are interested in my skills, feel free to send a message 
+        to <a href="mailto:mitsuya.watanabe85@gmail.com">mitsuya.watanabe85@gmail.com</a>.
+      </p>
+
+      <p class="right-container__passage text-justify mt-3">
+        See you then!!!
+      </p>
+      <div class="social-icon-container d-md-flex mt-5">
+        <a href="https://github.com/mitsuyacider" target="_blank"><img src="~/assets/img/github.svg"></a>
+        <a href="https://www.linkedin.com/in/mitsuya-watanabe" target="_blank"><img src="~/assets/img/linkedin.svg"></a>
+      </div>
+    </div>
   </div>
 </div>
 </template>
 
 <style lang="scss" scoped>
+.right-container {
 
+  &__passage {
+    font-size: 1.3em;
+    // color:white;
+    // background-color: black;
+  }
+}
 </style>
 
 <script>
@@ -21,3 +64,4 @@ export default {
   }
 }
 </script>
+

@@ -5,8 +5,8 @@
   "density": 1,
   "frictionAir": 0,
   "isDebug": false,
-  "resetInterval": 25000,
-  "expandRate": 1.108,
+  "resetInterval": 15000,
+  "expandRate": 1.021,
   "maxFontSize": 120,
   "minFontSize": 48,
   "minColor": 170

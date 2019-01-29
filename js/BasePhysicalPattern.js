@@ -30,8 +30,6 @@ export default class BasePhysicalPattern {
     this.screenHeight = canvas.height
     this.delegate = undefined
 
-    console.log("base >> " + canvas.width)
-
   }
 
   setDelegate (callback) {
@@ -236,7 +234,7 @@ export default class BasePhysicalPattern {
 
     this.context.lineWidth = 1.5
     if (body.isStatic) {
-      this.context.strokeStyle = this.isDebug ? '#0000ff' : '#0000ff00'
+      this.context.strokeStyle = this.isDebug ? '#0000ff' : '#00ff00'
     } else {
       this.context.strokeStyle = this.isDebug ? '#00ff00' : '#0000ff00'
     }

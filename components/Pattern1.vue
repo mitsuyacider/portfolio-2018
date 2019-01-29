@@ -79,7 +79,6 @@ export default {
   },
   methods: {
     initialize (data) {
-      console.log('**** initialize')
       this.gravityPattern.initialize(data)
     },
     callbackOnClick (info) {
