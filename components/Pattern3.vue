@@ -59,14 +59,16 @@ export default {
   },
   data () {
     return {
-      gravityPattern: {},
+      gravityPattern: undefined,
       screenWidth: 0,
       screenHeight: 0
     }
   },
   beforeDestroy () {
     // NOTE: Stop rendering
-    this.gravityPattern.stopAnimation()
+    if (this.gravityPattern !== undefined) {
+      this.gravityPattern.stopAnimation()
+    }
   },
   mounted () {    
     if (process.browser) {
