@@ -135,20 +135,23 @@ export default class BasePhysicalPattern {
           // NOTE: Initial y is set in the middle of height.
           //       Calculate y position so as to layout first word to top
           y -= contentHeight / 2 - fontsize / 2
-          Array.prototype.forEach.call(content, function (char, index) {
+
+          const strArr = content.split("")
+          for (let i = 0; i < strArr.length; i++) {
+            const char = strArr[i]
             // NOTE: 縦棒の場合は強制的に回転させる（苦肉の策)
             if (char === '-' || char === 'ー') {
               self.context.save()
-              self.context.translate(-fontsize / 2 + index * fontsize - 5, y + fontsize * index - Math.sin(radian) * fontsize)
+              self.context.translate(-fontsize / 2 + i * fontsize - 5, y + fontsize * i - Math.sin(radian) * fontsize)
               const rad90 = 90 * (Math.PI / 180)
               self.context.rotate(rad90)
               self.context.translate(0, (content.length - 1) * fontsize - fontsize / 2 * content.length)
-              self.context.fillText(char, 0, y + fontsize * index - Math.sin(radian) * fontsize)
+              self.context.fillText(char, 0, y + fontsize * i - Math.sin(radian) * fontsize)
               self.context.restore()
             } else {
-              self.context.fillText(char, 0, y + fontsize * index - Math.sin(radian) * fontsize)
+              self.context.fillText(char, 0, y + fontsize * i - Math.sin(radian) * fontsize)
             }
-          })
+          }
         } else {
           this.context.fillText(content, 0, 0)
         }
