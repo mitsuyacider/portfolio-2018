@@ -1,11 +1,50 @@
 <template>
 <div class="main-container d-md-flex">
   <div class="nav-main col-md-2 pl-4  d-none d-md-block">
-    <ul>
-        <li v-for="(work, index) in works" :key=work.name>
-            <button v-on:click="loadData(1)"> {{ work.name }} + {{index}}</button>
-        </li>
-    </ul>
+    <div role="tablist">
+      <b-card no-body class="mb-1">
+        <b-card-header onfocus="this.blur();" header-tag="header" class="p-0" role="tab">
+          <b-btn onfocus="this.blur();" class="rounded-0 p-2 text-left font-weight-bold" block href="#" v-b-toggle.accordion1 variant="info">Mobile Applications</b-btn>
+        </b-card-header>
+        <b-collapse id="accordion1" visible accordion="my-accordion" role="tabpanel">
+          <b-card-body class="p-0">
+          <div class="list-group">
+            <div v-for="(work, index) in works" :key=work.name>
+              <button type="button" onfocus="this.blur();" class="list-group-item list-group-item-action p-2">{{work.name}}</button>
+            </div>
+          </div>          
+          </b-card-body>
+        </b-collapse>
+      </b-card>
+      <b-card no-body class="mb-1">
+        <b-card-header onfocus="this.blur();" header-tag="header" class="p-0" role="tab">
+          <b-btn onfocus="this.blur();" class="rounded-0 p-2 text-left font-weight-bold" block href="#" v-b-toggle.accordion2 variant="info">Web Applications</b-btn>
+        </b-card-header>
+        <b-collapse id="accordion2" visible accordion="my-accordion" role="tabpanel">
+          <b-card-body class="p-0">
+          <div class="list-group">
+            <div v-for="(work, index) in works" :key=work.name>
+              <button type="button" onfocus="this.blur();" class="list-group-item list-group-item-action p-2">{{work.name}}</button>
+            </div>
+          </div>          
+          </b-card-body>
+        </b-collapse>
+      </b-card>
+      <b-card no-body class="mb-1">
+        <b-card-header onfocus="this.blur();" header-tag="header" class="p-0" role="tab">
+          <b-btn onfocus="this.blur();" class="rounded-0 p-2 text-left font-weight-bold" block href="#" v-b-toggle.accordion3 variant="info">R&D</b-btn>
+        </b-card-header>
+        <b-collapse id="accordion3" visible accordion="my-accordion" role="tabpanel">
+          <b-card-body class="p-0">
+          <div class="list-group">
+            <div v-for="(work, index) in works" :key=work.name>
+              <button type="button" onfocus="this.blur();" class="list-group-item list-group-item-action p-2">{{work.name}}</button>
+            </div>
+          </div>          
+          </b-card-body>
+        </b-collapse>
+      </b-card>        
+    </div>    
   </div>
   <div ref="project" class="project-container col-md-10 col-xs-12">
     <pattern-1 ref="pattern" v-if="animationPattern === 1" v-on:callbackOnWordClick=onWordClick />
@@ -55,6 +94,10 @@ export default {
     this.canvasSize.width = this.$refs.project.clientWidth
   },
   methods: {
+    onClickMenu () {
+      console.log("***")
+      this.blur()
+    },    
     zeroPadding (num, length) {
       return ('0000000000' + num).slice(-length)
     },
