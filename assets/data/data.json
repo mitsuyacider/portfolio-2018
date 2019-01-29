@@ -1,16 +1,57 @@
-[
-  {"name" : "Media Art Festival"},
-  {"name" : "Bean Sorting"},
-  {"name" : "ASTANA Expo"},
-  {"name" : "Machikon"},
-  {"name" : "Stealth"},
-  {"name" : "YouTuber"},
-  {"name" : "Club360"},
-  {"name" : "Clap Light"},
-  {"name" : "Sexy Drum"},
-  {"name" : "Ningen-Tetri"},
-  {"name" : "xmas-firewor"},
-  {"name" : "Doleunay"},
-  {"name" : "TensorFlow-S"},
-  {"name" : "English-Card"}
-]
+{
+  "mobile" : [
+                { 
+                  "name" : "ASTANA Expo",
+                  "file": "astana"
+                },
+                { 
+                  "name" : "Stealth",
+                  "file": "stealth"
+                },
+                { 
+                  "name" : "Club360",
+                  "file" : "club360"
+                },
+                { 
+                  "name" : "Clap Light",
+                  "file" : "claplight"
+                },
+                { 
+                  "name" : "Sexy Drum",
+                  "file" : "sexydrum"
+                }
+              ],
+  "web" : [
+                { 
+                  "name" : "Media Art Festival",
+                  "file" : "mediaart"
+                },
+                {
+                  "name" : "Machikon",
+                  "file" : "machikon"
+                },
+                {
+                  "name" : "YouTuber",
+                  "file" : "youtube"
+                },
+                {
+                  "name" : "Ningen-Tetris",
+                  "file" : "tetris"
+                }
+              ],
+  "r_d" : [
+                {
+                  "name" : "xmas-firewor",
+                  "file" : "xmas"
+                },
+                {
+                  "name" : "Bean Sorting",
+                  "file" : "beans"
+                },
+                {
+                  "name" : "English-Card",
+                  "file" : "english"
+                }
+              ]
+
+}
