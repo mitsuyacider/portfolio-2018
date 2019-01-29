@@ -15,7 +15,8 @@
           <button 
             type="button" 
             onfocus="this.blur();" 
-            class="list-group-item list-group-item-action p-2">
+            class="list-group-item list-group-item-action p-2"
+            @click="$emit('tappedWork', work)">
             {{work.name}}
           </button>
         </div>

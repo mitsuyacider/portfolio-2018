@@ -1,7 +1,7 @@
 <template>
 <div class="main-container d-md-flex">
   <div class="nav-main col-md-2 pl-4  d-none d-md-block">
-    <works-menu />
+    <works-menu v-on:tappedWork="onClickWork" />
   </div>
   <div ref="project" class="project-container col-md-10 col-xs-12">
     <pattern-1 ref="pattern" v-if="animationPattern === 1" v-on:callbackOnWordClick=onWordClick />
@@ -51,13 +51,6 @@ export default {
     this.canvasSize.width = this.$refs.project.clientWidth
   },
   methods: {
-    onClickMenu () {
-      console.log("***")
-      this.blur()
-    },    
-    zeroPadding (num, length) {
-      return ('0000000000' + num).slice(-length)
-    },
     onButtonClick (tag) {
       this.$refs.laneContainer.killAllAnimation()
       this.$refs.laneContainer.deleteChildren()
@@ -69,10 +62,12 @@ export default {
       console.log('Tapped Word: ' + JSON.stringify(info))
       NativeCommunicator.postWordData(info)
     },
-    loadData (id) {
+    onClickWork (work) {
+      this.loadData(work.file)
+    },
+    loadData (preFileName) {
       const self = this
-      const idPrefix = this.zeroPadding(id, 2)
-      const wordsPath = '/words/' + idPrefix + '-words.csv'
+      const wordsPath = '/words/' + preFileName + '-words.csv'
       csvLoader.loadData(wordsPath).then((data) => {
       console.log(data)
         self.wordDataList = data

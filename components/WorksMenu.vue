@@ -1,8 +1,18 @@
 <template>
   <div role="tablist">
-    <category-card :works="works['web']" :accordionId="'accordion1'" :title="'Web Applications'" />
-    <category-card :works="works['mobile']" :accordionId="'accordion2'" :title="'Mobile Applications'" />
-    <category-card :works="works['r_d']" :accordionId="'accordion3'" :title="'R&D'" />
+    <category-card 
+      :works="works['web']" 
+      :accordionId="'accordion1'" 
+      :title="'Web Applications'" 
+      v-on:tappedWork="onTapWork" />
+    <category-card 
+      :works="works['mobile']" 
+      :accordionId="'accordion2'" 
+      :title="'Mobile Applications'" />
+    <category-card 
+    :works="works['r_d']" 
+    :accordionId="'accordion3'" 
+    :title="'R&D'" />
 
   </div>    
 </template>
@@ -19,6 +29,11 @@ export default {
   },
   components: {
     CategoryCard    
+  },
+  methods: {
+    onTapWork (work) {
+      this.$emit('tappedWork', work)
+    }
   }
 }
 </script>
