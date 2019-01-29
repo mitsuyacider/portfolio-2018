@@ -28,9 +28,14 @@ export function main(_p5) {
   }
 
   p5.draw = _ => {
-    p5.background(255);
+    p5.background(220);
     drawCircle();
   }
+}
+
+export function killAnimation() {
+  p5.noLoop();
+  p5.noCanvas();  
 }
 
 function drawCircle() {

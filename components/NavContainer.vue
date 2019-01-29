@@ -30,9 +30,9 @@
           <li class="nav-item">
             <nuxt-link to="/about">About</nuxt-link>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="mailto:mitsuya.watanabe85@gmail.com">Contact</a>
-          </li>
+          </li> -->
         </ul>
       </div> <!-- /ナビゲーション -->
 
@@ -56,6 +56,9 @@ export default {
       works: data,
       showCollapse: false
     }
+  },
+  mounted () {
+    // console.log("**mounted")
   },
   methods: {
     tappedWork (work) {

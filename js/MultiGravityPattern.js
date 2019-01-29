@@ -76,7 +76,6 @@ export default class MultiGravityPattern extends BasePhysicalPattern {
       if (this.staticCircle.circleRadius > maxRadius * 4) {
         this.shouldExpand = false
 
-        console.log("** multigenerator matter update")
         this.stopAnimation()
         this.initialize(this.wordDataList)
       }

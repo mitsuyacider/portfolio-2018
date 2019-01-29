@@ -45,8 +45,7 @@
 </template>
 
 <style lang="scss" scoped>
-.right-container {
-
+.right-container {  
   &__passage {
     font-size: 1.3em;
     // color:white;
@@ -54,10 +53,8 @@
   }
 }
 
-.canvas-container {
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
+.left-container {
+  background: #DCDCDC;
 }
 </style>
 
@@ -68,18 +65,22 @@ export default {
   components: {
     NavContainer
   },
+  data () {
+    return {
+      radar: undefined
+    }
+  },
+  beforeDestroy () {
+    if (this.radar !== undefined) {
+      this.radar.killAnimation()
+    }
+  },
   mounted () {
     if (process.browser) {
-      var radar = require('@/js/Radar.js')
+      this.radar = require('@/js/Radar.js')      
       const P5 = require('p5')
-      new P5(radar.main)
+      new P5(this.radar.main)      
     }
-
-    // const P5 = require('p5')
-    // new P5(radar.main)
-
-    // // NOTE: p5.jsからのコールバックを受け取る
-    // radar.setDelegate(this.callbackOnP5);
   }
 }
 </script>
