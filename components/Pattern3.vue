@@ -5,7 +5,12 @@
       <!-- PC Display -->
       <div class="info-container m-0 d-none d-md-flex">
         <div class="info-container__left col-md-6 d-flex justify-content-center align-items-center">
-          <img ref="circle" class="info-container__left__bg rounded-circle " src="@/assets/img/coffee.png" alt="coffee">
+          <img 
+            ref="circle" 
+            class="info-container__left__bg rounded-circle " 
+            :src="require('@/assets/img/' + selectedWork.file + '.png')"
+            alt="coffee"
+            :style="{ width: this.canvasSize.width / 4 + 'px' }">
         </div>
 
         <div class="info-container__right col-md-6 d-flex p-0 align-items-center">
@@ -27,7 +32,11 @@
       <!-- Mobile  -->
       <div class="info-container m-0 d-block d-md-none">
         <div class="info-container__left d-flex justify-content-center align-items-center">
-          <img ref="circle" class="info-container__left__bg rounded-circle " src="@/assets/img/coffee.png" alt="coffee">
+          <img 
+          ref="circle" 
+          class="info-container__left__bg rounded-circle " 
+            :src="require('@/assets/img/' + selectedWork.file + '.png')"
+          alt="coffee">
         </div>
         <div class="info-container__right p-0 d-flex align-items-center">
           <div class="info-container__right__caption mt-5 text-center">
@@ -112,7 +121,7 @@ $breakpoint-mobile: 768px;
 
   &__bg {
     @include min-screen($breakpoint-tablet) {
-      // min-width: 350px;
+      min-width: 350px;
       // width: 500px; 
     }
 
@@ -160,12 +169,24 @@ export default {
     window.addEventListener('resize', this.handleResize)
   },
   methods: {
+    getCircleSize () {
+      let circleSize
+      const circle = document.getElementsByClassName('info-container__left__bg')      
+      if (window.innerWidth <= 768) {
+        this.screenHeight = (screen.height - 94) * 2
+        circleSize = this.$refs.circle.clientWidth
+      } else {
+        circleSize = circle[0].clientWidth
+      }        
+
+      return circleSize
+    },
     handleResize () {
       let newWidth = this.$refs.main.clientWidth
 
       this.canvasSize.width = newWidth
       if (this.gravityPattern !== undefined) {    
-        const circleSize = this.$refs.circle.clientWidth    
+        const circleSize = this.getCircleSize()
         this.gravityPattern.updateCanvasSize(newWidth, circleSize)
       }
     },
@@ -174,12 +195,7 @@ export default {
       this.screenWidth = this.canvasSize.width * 2
       this.screenHeight = 1800
 
-      let circleSize = this.$refs.circle.width
-      if (window.innerWidth <= 768) {
-        this.screenHeight = (screen.height - 94) * 2
-        circleSize = this.$refs.circle.clientWidth
-      } 
-
+      const circleSize = this.getCircleSize()
       canvas.width = this.screenWidth
       canvas.height = this.screenHeight
       if (this.gravityPattern !== undefined) {
