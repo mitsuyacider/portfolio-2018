@@ -62,8 +62,7 @@ export default {
     loadData (preFileName) {
       const self = this
       const wordsPath = '/words/' + preFileName + '-words.csv'
-      csvLoader.loadData(wordsPath).then((data) => {
-        // self.wordDataList = data
+      csvLoader.loadData(wordsPath).then((data) => {        
         self.$refs.pattern.initialize(data)
       }).catch((e) => {
         console.log(e)

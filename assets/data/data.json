@@ -2,47 +2,97 @@
   "mobile" : [
                 { 
                   "name" : "ASTANA Expo",
-                  "file": "astana"
+                  "file" : "astana",
+                  "year" : "2016",
+                  "tech" : "iOS/Android, Sound Analyze",
+                  "role" : "Management, Developmet",
+                  "client" : "IMAGICA Imageworks, Inc.",
+                  "link" : "https://www.pics.tokyo/works/expo-astana-2017-japan-pavilion/"
                 },
                 { 
-                  "name" : "Stealth",
-                  "file": "stealth"
+                  "name" : "Stealth Beacon",
+                  "file": "stealth",
+                  "year" : "2018",
+                  "tech" : "Unity, iBeacon, Sound Recognition, 3D Sound",
+                  "role" : "Developmet",
+                  "client" : "Gifu Museum",
+                  "link" : "https://www.gifu-np.co.jp/news/20190115/20190115-105810.html?fbclid=IwAR1pn__T4QOGgcASWayKWZ26NAW0xtwVF_7Pob5zejxqvE2bj8bUhE1gl44"
                 },
                 { 
                   "name" : "Club360",
-                  "file" : "club360"
+                  "file" : "club360",
+                  "year" : "2016",
+                  "tech" : "Unity, VR",
+                  "role" : "Developmet",
+                  "client" : "GOCCO., Inc.",
+                  "link" : "http://club360.info/en/"
                 },
                 { 
                   "name" : "Clap Light",
-                  "file" : "claplight"
+                  "file" : "claplight",
+                  "year" : "2018",
+                  "tech" : "iOS, Camera",
+                  "role" : "Developmet",
+                  "client" : "Junichi Kanebako(Artist)",
+                  "link" : "http://kanejun.com/works_claplight.html"
                 },
                 { 
-                  "name" : "Sexy Drum",
-                  "file" : "sexydrum"
+                  "name" : "banggos",
+                  "file" : "sexydrum",
+                  "year" : "2017",
+                  "tech" : "iOS, Hardware Communication",
+                  "role" : "Developmet",
+                  "client" : "kaoringMachine(Artist)",
+                  "link" : "https://www.kickstarter.com/projects/873660033/banggos-electric-sexy-drum-pants"
                 }
               ],
   "web" : [
                 { 
-                  "name" : "Media Art Festival",
-                  "file" : "mediaart"
+                  "name" : "Japan Media Art Festival in Aska Kashihara",
+                  "file" : "mediaart",
+                  "year" : "2019",
+                  "tech" : "Vue, canvas animation",
+                  "role" : "Developmet",
+                  "client" : "TOPPAN PRINTING CO., LTD.",
+                  "link" : "http://mediaarts-asuka-kashihara.com/"
                 },
                 {
                   "name" : "Machikon",
-                  "file" : "machikon"
+                  "file" : "machikon",
+                  "year" : "2019",
+                  "tech" : "Vue, Bluetooth",
+                  "role" : "Developmet",
+                  "client" : "Kutami, Inc.",
+                  "link" : "under construction"
                 },
                 {
-                  "name" : "YouTuber",
-                  "file" : "youtube"
+                  "name" : "segatubers",
+                  "file" : "segatubers",
+                  "year" : "2019",
+                  "tech" : "Vue, Node.js, image processing",
+                  "role" : "Developmet",
+                  "client" : "SEGA ENTERTAINMENT Co. Ltd.",
+                  "link" : "https://segatubers.com/"
                 },
                 {
                   "name" : "Ningen-Tetris",
-                  "file" : "tetris"
+                  "file" : "tetris",
+                  "year" : "2018",
+                  "tech" : "Vue, TensorFlow PoseNet",
+                  "role" : "Developmet",
+                  "client" : "Personal",
+                  "link" : "https://ningen-tetris.herokuapp.com"
                 }
               ],
   "r_d" : [
                 {
-                  "name" : "xmas-firewor",
-                  "file" : "xmas"
+                  "name" : "xmas-fireworks",
+                  "file" : "xmas",
+                  "year" : "2018",
+                  "tech" : "Vue, TensorFlow PoseNet",
+                  "role" : "Developmet",
+                  "client" : "Personal",
+                  "link" : "https://xmas-fireworks.herokuapp.com"
                 },
                 {
                   "name" : "Bean Sorting",

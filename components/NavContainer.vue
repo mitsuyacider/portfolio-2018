@@ -39,6 +39,7 @@
 
 <script>
 import data from '@/assets/data/data.json'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'App',
@@ -60,8 +61,12 @@ export default {
   methods: {
     tappedWork (work) {
       this.showCollapse = false
+      this.setSelectedWork(work)
       this.$emit('tappedWork', work)
-    }
+    },
+    ...mapActions([
+      'setSelectedWork'
+    ])
   }
 }
 </script>

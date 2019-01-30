@@ -11,14 +11,14 @@
         <div class="info-container__right col-md-6 d-flex p-0 align-items-center">
           <div class="info-container__right__caption col-md-6" :style="{ width: this.canvasSize.width / 2 + 'px' }">          
             <div class="info-container__right__caption__title">
-              <h3 class="mb-0 font-weight-bold">Stealth</h3>
-              <small>2018</small>            
+              <h3 class="mb-0 font-weight-bold">{{ selectedWork.name }}</h3>
+              <small>{{ selectedWork.year }}</small>            
             </div>
             <div class="info-container__right__caption__detail">
-              <p class="mt-3 mb-0">Role: Development</p>
-              <p class="m-0">Client: Gifu Museum</p>
-              <p class="mb-2">Tech: Unity, JavaScript</p>
-              <p class="d-md-block">detail</p>
+              <p class="mt-3 mb-0">Role: {{ selectedWork.role }}</p>
+              <p class="m-0">Client: {{ selectedWork.client }}</p>
+              <p class="mb-2">Tech: {{ selectedWork.tech }}</p>
+              <a :href=selectedWork.link target="blank"> detail </a> 
             </div>
           </div>
         </div>
@@ -128,61 +128,23 @@ $breakpoint-mobile: 768px;
 <script>
 import MultiGravityPattern from '@/js/MultiGravityPattern'
 import config from '@/static/config/pattern3.json'
+import { mapGetters } from 'vuex'
+
 export default {
   props: {
-    createDuration: {
-      type: Number,
-      default: config.createDuration
-    },
-    restitution: {
-      type: Number,
-      default: config.restitution
-    },
-    friction: {
-      type: Number,
-      default: config.friction
-    },
-    density: {
-      type: Number,
-      defalut: config.density
-    },
-    frictionAir: {
-      type: Number,
-      default: config.frictionAir
-    },
-    isDebug: {
-      type: Boolean,
-      deault: config.isDebug
-    },
-    resetInterval: {
-      type: Number,
-      default: config.resetInterval
-    },
-    expandRate: {
-      type: Number,
-      default: config.expandRate
-    },
-    maxFontSize: {
-      type: Number,
-      default: config.maxFontSize
-    },
-    minFontSize: {
-      type: Number,
-      default: config.minFontSize
-    },
-    minColor: {
-      type: Number,
-      default: config.minColor
-    },
     canvasSize: {
       type:Object
+    },
+    worksData: {
+      type: Object
     }
   },
   data () {
     return {
       gravityPattern: undefined,
       screenWidth: 0,
-      screenHeight: 0
+      screenHeight: 0,
+      workData: {}
     }
   },
   beforeDestroy () {
@@ -194,7 +156,7 @@ export default {
 
     window.removeEventListener('resize', this.handleResize)
   },
-  mounted () {            
+  mounted () {     
     window.addEventListener('resize', this.handleResize)
   },
   methods: {
@@ -236,15 +198,19 @@ export default {
     }
   },
   watch: {
-    canvasSize: function (newVal, oldVal) {
-      console.log(newVal)
-    }
-  }
+    '$store.getters.selectedWork': function (newVal, oldVal) {
+      if (newVal != oldVal) {
+      console.log('selected work : ' + newVal.name)
+        // this.workData = newVal
+      }
+    }    
+  },
+  computed: {
+    // ゲッターを、スプレッド演算子（object spread operator）を使って computed に組み込む
+    ...mapGetters([
+      'selectedWork'
+    ])
+  }  
 }
 </script>
 
-<style lang="scss" scoped>
-.main-container {
-  // background: red;
-}
-</style>

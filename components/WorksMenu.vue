@@ -20,6 +20,7 @@
 <script>
 import data from '@/assets/data/data.json'
 import CategoryCard from '@/components/CategoryCard'
+import { mapActions } from 'vuex'
 
 export default {
   data () {
@@ -32,8 +33,13 @@ export default {
   },
   methods: {
     onTapWork (work) {
+      this.setSelectedWork(work)
       this.$emit('tappedWork', work)
-    }
+    },
+    ...mapActions([
+      'setSelectedWork'
+    ])
+
   }
 }
 </script>
