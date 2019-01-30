@@ -3,7 +3,7 @@
     <canvas class="position-fixed" id="pattern3Canvas" :width=screenWidth :height=screenHeight></canvas>
       <div class="info-container m-0 d-flex">
         <div class="info-container__left col-md-6 d-flex justify-content-center align-items-center">
-          <img class="info-container__bg rounded-circle " src="@/assets/img/coffee.png" alt="coffee">
+          <img ref="circle" class="info-container__bg rounded-circle " src="@/assets/img/coffee.png" alt="coffee">
         </div>
         <div class="info-container__left col-md-6 d-flex p-0 align-items-center">
           <div class="info-container__caption col-md-6" :style="{ width: this.canvasSize.width / 2 + 'px' }">          
@@ -131,12 +131,13 @@ export default {
   },
   methods: {
     handleResize () {
-      console.log(this.$refs.main)
-      const newWidth = this.$refs.main.clientWidth * 3
+      let newWidth = this.$refs.main.clientWidth
 
-      this.canvasSize.width = newWidth / 3
-      if (this.gravityPattern !== undefined) {
-        this.gravityPattern.updateCanvasSize(newWidth)
+      this.canvasSize.width = newWidth
+      if (this.gravityPattern !== undefined) {    
+        const ciecleSize = this.$refs.circle.clientWidth    
+        console.log(ciecleSize)
+        this.gravityPattern.updateCanvasSize(newWidth, ciecleSize)
       }
     },
     initialize (data) {
@@ -151,9 +152,10 @@ export default {
         this.gravityPattern = undefined;
       }
 
+      const ciecleSize = this.$refs.circle.clientWidth    
       this.gravityPattern = new MultiGravityPattern(canvas)
       this.gravityPattern.setDelegate(this.callbackOnClick)
-      this.gravityPattern.initialize(data)
+      this.gravityPattern.initialize(data, ciecleSize)
     },
     callbackOnClick (info) {
       info.type = 3

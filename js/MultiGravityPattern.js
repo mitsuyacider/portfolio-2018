@@ -8,7 +8,11 @@ export default class MultiGravityPattern extends BasePhysicalPattern {
     this.shouldExpand = false
     this.expandRate = 1.108
     this.staticCircle = {}
+    this.rightWall = {}
+    this.circleSize = 0
+    this.ground = {}
 
+    // NOTE: Setting from json
     this.createDuration = config.createDuration
     this.restitution = config.restitution
     this.friction = config.friction
@@ -19,44 +23,53 @@ export default class MultiGravityPattern extends BasePhysicalPattern {
     this.expandRate = config.expandRate
     this.maxFontSize = config.maxFontSize
     this.minFontSize = config.minFontSize
-    // this.minColor = config.minColor
     this.minColor = config.minColor
   }
 
-  updateCanvasSize (width) {
-    this.screenWidth = width 
+  updateCanvasSize (width, size) {    
+    this.screenWidth = width * 2
+    this.circleSize = size
+
+    Matter.Composite.remove(this.engine.world, this.staticCircle)
+    Matter.Composite.remove(this.engine.world, this.ground)
+    Matter.Composite.remove(this.engine.world, this.rightWall)
+
+    this.staticCircle = Matter.Bodies.circle(this.screenWidth / 4, 
+      this.screenHeight / 2, 
+      this.circleSize, 
+      {
+        isStatic: true,
+      }
+    )
+
+    this.ground = Matter.Bodies.rectangle(this.screenWidth / 2, this.screenHeight, this.screenWidth, 2, { isStatic: true })
+    this.rightWall = Matter.Bodies.rectangle(this.screenWidth, 0, 2, this.screenHeight * 2, { isStatic: true })
+    Matter.World.add(this.engine.world, [this.staticCircle, this.ground, this.rightWall])
   }
 
-  initialize (data) {
+  initialize (data, size) {
     const needBottomBody = true
     super.initialize(data, needBottomBody)
 
     // NOTE: Create walls
     const World = Matter.World
     const Bodies = Matter.Bodies
-    const circleSize = this.screenWidth / 8
-    const ground = Bodies.rectangle(this.screenWidth / 2, this.screenHeight, this.screenWidth, 2, { isStatic: true })
+    this.circleSize = size
+    this.ground = Bodies.rectangle(this.screenWidth / 2, this.screenHeight, this.screenWidth, 2, { isStatic: true })
     const leftWall = Bodies.rectangle(0, 0, 2, this.screenHeight * 2, { isStatic: true })
-    const rightWall = Bodies.rectangle(this.screenWidth, 0, 2, this.screenHeight * 2, { isStatic: true })
+    this.rightWall = Bodies.rectangle(this.screenWidth, 0, 2, this.screenHeight * 2, { isStatic: true })
     const upWall = Bodies.rectangle(this.screenWidth, 0, this.screenWidth * 2, 2, { isStatic: true })
-    this.staticCircle = Bodies.circle(this.screenWidth / 10, 
+    this.staticCircle = Bodies.circle(this.screenWidth / 4, 
                                       this.screenHeight / 2, 
-                                      circleSize, 
+                                      this.circleSize, 
                                       {
                                         isStatic: true,
-                                        render: {
-                                          sprite: {
-                                              texture: '../assets/img/coffee.png'
-                                          }
-                                      }})
-    World.add(this.engine.world, [upWall, ground, leftWall, rightWall, this.staticCircle])
+                                      })
+    World.add(this.engine.world, [upWall, this.ground, leftWall, this.rightWall, this.staticCircle])
 
     const Events = Matter.Events
     Events.on(this.engine, 'beforeUpdate', this.matterBeforeUpdate.bind(this))
     this.render()
-
-    console.log(this.screenWidth)
-    Matter.Body.setPosition(this.staticCircle, {x: this.screenWidth / 4, y: this.screenHeight / 2})
 
     // NOTE: resetInterval後に円を肥大化させる。
     window.setTimeout(() => {
@@ -94,7 +107,7 @@ export default class MultiGravityPattern extends BasePhysicalPattern {
         this.shouldExpand = false
 
         this.stopAnimation()
-        this.initialize(this.wordDataList)
+        this.initialize(this.wordDataList, this.circleSize)
       }
     }
   }
