@@ -8,11 +8,13 @@
     <category-card 
       :works="works['mobile']" 
       :accordionId="'accordion2'" 
-      :title="'Mobile Applications'" />
+      :title="'Mobile Applications'"
+      v-on:tappedWork="onTapWork" />
     <category-card 
     :works="works['r_d']" 
     :accordionId="'accordion3'" 
-    :title="'R&D'" />
+    :title="'R&D'"
+    v-on:tappedWork="onTapWork" />
 
   </div>    
 </template>

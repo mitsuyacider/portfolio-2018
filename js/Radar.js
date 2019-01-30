@@ -8,7 +8,6 @@ export function main(_p5) {
   p5 = _p5
 
   p5.setup = _ => {
-    console.log(screen.width)
     var canvas;
     if (screen.width <= 768) {
       canvas = p5.createCanvas(320, 320)

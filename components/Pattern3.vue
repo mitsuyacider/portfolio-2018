@@ -32,14 +32,14 @@
         <div class="info-container__right p-0 d-flex align-items-center">
           <div class="info-container__right__caption mt-5 text-center">
             <div class="info-container__right__caption__title">
-              <h3 class="mb-0 font-weight-bold">Stealth Mobile</h3>
-              <small>2018</small>            
+              <h3 class="mb-0 font-weight-bold">{{ selectedWork.name }}</h3>
+              <small>{{ selectedWork.year }}</small>            
             </div>
             <div class="info-container__right__caption__detail">
-              <p class="mt-3 mb-0">Role: Development</p>
-              <p class="m-0">Client: Gifu Museum</p>
-              <p class="mb-2">Tech: Unity, JavaScript</p>
-              <p class="d-md-block">detail</p>
+              <p class="mt-3 mb-0">Role: {{ selectedWork.role }}</p>
+              <p class="m-0">Client: {{ selectedWork.client }}</p>
+              <p class="mb-2">Tech: {{ selectedWork.tech }}</p>
+              <a :href=selectedWork.link target="blank"> detail </a> 
             </div>
           </div>
         </div>
@@ -196,14 +196,6 @@ export default {
       info.type = 3
       this.$emit('callbackOnWordClick', info)
     }
-  },
-  watch: {
-    '$store.getters.selectedWork': function (newVal, oldVal) {
-      if (newVal != oldVal) {
-      console.log('selected work : ' + newVal.name)
-        // this.workData = newVal
-      }
-    }    
   },
   computed: {
     // ゲッターを、スプレッド演算子（object spread operator）を使って computed に組み込む

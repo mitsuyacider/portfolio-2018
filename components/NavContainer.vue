@@ -55,9 +55,6 @@ export default {
       showCollapse: false
     }
   },
-  mounted () {
-    // console.log("**mounted")
-  },
   methods: {
     tappedWork (work) {
       this.showCollapse = false

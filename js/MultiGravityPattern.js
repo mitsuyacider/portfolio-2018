@@ -52,7 +52,6 @@ export default class MultiGravityPattern extends BasePhysicalPattern {
 
     let x = 0
     let y = 0
-    console.log("***" + size)
     if (window.innerWidth <= 768) {
       x = this.screenWidth / 2
       y = 50 + 50 + 10 + size * 2 / 2
