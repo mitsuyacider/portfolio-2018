@@ -8,8 +8,8 @@
 
       <div class="d-md-none container pl-0 pr-0">
         <b-btn v-b-toggle.collapse1 variant="primary">Works</b-btn>
-        <b-btn class="ml-2" v-b-toggle variant="primary">About</b-btn>
-        <a href="mailto:mitsuya.watanabe85@gmail.com"><b-btn class="ml-2" v-b-toggle variant="primary">Contact</b-btn></a>
+        <nuxt-link to="/about"><b-btn class="ml-2" v-b-toggle variant="primary">About</b-btn></nuxt-link>
+        <!-- <a href="mailto:mitsuya.watanabe85@gmail.com"><b-btn class="ml-2" v-b-toggle variant="primary">Contact</b-btn></a> -->
         <b-collapse v-model="showCollapse" id="collapse1" class="w-100 mt-2">
           <b-card>
             <ul>
@@ -30,9 +30,6 @@
           <li class="nav-item">
             <nuxt-link to="/about">About</nuxt-link>
           </li>
-          <!-- <li class="nav-item">
-            <a href="mailto:mitsuya.watanabe85@gmail.com">Contact</a>
-          </li> -->
         </ul>
       </div> <!-- /ナビゲーション -->
 

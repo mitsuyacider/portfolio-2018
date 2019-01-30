@@ -1,12 +1,14 @@
 <template>
   <div ref="main" class="main-container">
     <canvas class="position-fixed" id="pattern3Canvas" :width=screenWidth :height=screenHeight></canvas>
-      <div class="info-container m-0 d-flex">
+      
+      <!-- PC Display -->
+      <div class="info-container m-0 d-none d-md-flex">
         <div class="info-container__left col-md-6 d-flex justify-content-center align-items-center">
           <img ref="circle" class="info-container__bg rounded-circle " src="@/assets/img/coffee.png" alt="coffee">
         </div>
-        <div class="info-container__left col-md-6 d-flex p-0 align-items-center">
-          <div class="info-container__caption col-md-6" :style="{ width: this.canvasSize.width / 2 + 'px' }">          
+        <div class="info-container__right col-md-6 d-flex p-0 align-items-center">
+          <div class="info-container__right__caption col-md-6" :style="{ width: this.canvasSize.width / 2 + 'px' }">          
             <div class="info-container__caption__title">
               <h3 class="mb-0 font-weight-bold">Stealth</h3>
               <small>2018</small>            
@@ -20,23 +22,94 @@
           </div>
         </div>
       </div>
+
+      <!-- Mobile  -->
+      <div class="info-container m-0 d-block d-md-none">
+        <div class="info-container__left d-flex justify-content-center align-items-center">
+          <img ref="circle" class="info-container__bg rounded-circle " src="@/assets/img/coffee.png" alt="coffee">
+        </div>
+        <div class="info-container__right mt-4 p-0 d-flex align-items-center">
+          <div class="info-container__right__caption text-left">
+            <div class="info-container__caption__title">
+              <h3 class="mb-0 font-weight-bold">Stealth Mobile</h3>
+              <small>2018</small>            
+            </div>
+            <div class="info-container__caption__detail">
+              <p class="mt-3 mb-0">Role: Development</p>
+              <p class="m-0">Client: Gifu Museum</p>
+              <p class="mb-2">Tech: Unity, JavaScript</p>
+              <p class="d-md-block">detail</p>
+            </div>
+          </div>
+        </div>
+      </div>      
   </div>
 </template>
 
 <style lang="scss" scoped>
 
+$breakpoint-tablet: 980px;
+$breakpoint-mobile: 640px;
+
+@mixin max-screen($break-point) {
+  @media screen and (max-width: $break-point) {
+    @content;
+  }
+}
+
+@mixin min-screen($break-point) {
+  @media screen and (min-width: $break-point) {
+    @content;
+  }
+}
+
+@mixin screen($break-point-min, $break-point-max) {
+  @media screen and (min-width: $break-point-min) and (max-width: $break-point-max) {
+    @content;
+  }
+}
+
+.info-container__right {
+  @include max-screen($breakpoint-mobile) {
+      min-width: 300px;
+    
+    &__caption {
+      margin: 0 auto;
+    }
+
+  }
+}
 
 .info-container {
-  height: 900px;
+    @include min-screen($breakpoint-tablet) {
+      height: 900px;
+    }
+
+    @include max-screen($breakpoint-mobile) {
+      height: 500px; 
+    }
 
   &__bg {
-    min-width: 350px;
-    // width: calc(100% / );
-    height: auto;
+    @include min-screen($breakpoint-tablet) {
+      width: 350px; 
+    }
+
+    @include max-screen($breakpoint-mobile) {
+      margin-top: 20px;      
+      width: 180px; 
+    }
   }
 
   &__caption {
-    min-width: 350px;
+    
+    @include min-screen($breakpoint-tablet) {
+      width: 350px; 
+    }
+
+    @include max-screen($breakpoint-mobile) {
+      width: 300px; 
+    }
+
     z-index: 10;
     font-size: 1.2em;
 
