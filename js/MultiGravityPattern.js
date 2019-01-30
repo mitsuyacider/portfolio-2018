@@ -25,7 +25,6 @@ export default class MultiGravityPattern extends BasePhysicalPattern {
 
   updateCanvasSize (width) {
     this.screenWidth = width 
-    Matter.Body.setPosition(this.staticCircle, {x: this.screenWidth / 3, y: this.screenHeight / 2})
   }
 
   initialize (data) {
@@ -35,18 +34,29 @@ export default class MultiGravityPattern extends BasePhysicalPattern {
     // NOTE: Create walls
     const World = Matter.World
     const Bodies = Matter.Bodies
-    const circleSize = this.screenWidth / 9
+    const circleSize = this.screenWidth / 8
     const ground = Bodies.rectangle(this.screenWidth / 2, this.screenHeight, this.screenWidth, 2, { isStatic: true })
     const leftWall = Bodies.rectangle(0, 0, 2, this.screenHeight * 2, { isStatic: true })
     const rightWall = Bodies.rectangle(this.screenWidth, 0, 2, this.screenHeight * 2, { isStatic: true })
     const upWall = Bodies.rectangle(this.screenWidth, 0, this.screenWidth * 2, 2, { isStatic: true })
-    this.staticCircle = Bodies.circle(this.screenWidth / 3, this.screenHeight / 2, circleSize, {isStatic: true})
+    this.staticCircle = Bodies.circle(this.screenWidth / 10, 
+                                      this.screenHeight / 2, 
+                                      circleSize, 
+                                      {
+                                        isStatic: true,
+                                        render: {
+                                          sprite: {
+                                              texture: '../assets/img/coffee.png'
+                                          }
+                                      }})
     World.add(this.engine.world, [upWall, ground, leftWall, rightWall, this.staticCircle])
 
     const Events = Matter.Events
     Events.on(this.engine, 'beforeUpdate', this.matterBeforeUpdate.bind(this))
-
     this.render()
+
+    console.log(this.screenWidth)
+    Matter.Body.setPosition(this.staticCircle, {x: this.screenWidth / 4, y: this.screenHeight / 2})
 
     // NOTE: resetInterval後に円を肥大化させる。
     window.setTimeout(() => {

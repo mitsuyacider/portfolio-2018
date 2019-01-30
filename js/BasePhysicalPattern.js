@@ -8,15 +8,6 @@ export default class BasePhysicalPattern {
     this.canvas.style.width = String(canvas.width / 2) + 'px'
     this.canvas.style.height = String(canvas.height / 2) + 'px'
 
-    // // module aliases
-    // const Engine = Matter.Engine
-    // this.engine = Engine.create()
-
-    // const Events = Matter.Events
-    // Events.on(this.engine, 'beforeUpdate', this.matterBeforeUpdate.bind(this))
-    // Engine.run(this.engine)
-    // this.mouse = Matter.Mouse.create(canvas)
-
     // touchstartに対応してたらtouchstart、してなければclick
     const mytap = window.ontouchstart === null ? 'touchstart' : 'click'
     // canvas.addEventListener(mytap, this.callbackOnClick.bind(this))

@@ -1,21 +1,53 @@
 <template>
   <div ref="main" class="main-container">
-    <canvas id="pattern3Canvas" :width=screenWidth :height=screenHeight></canvas>
-    <div class="d-flex justify-content-center align-items-center">
-      <div class="info-container container d-flex justify-content-center align-items-center rounded-circle ">
-        <img class="rounded-circle" :style="{ height: this.canvasSize.width / 3 + 'px' }" src="@/assets/img/coffee.png" alt="coffee">
+    <canvas class="position-fixed" id="pattern3Canvas" :width=screenWidth :height=screenHeight></canvas>
+      <div class="info-container m-0 d-flex">
+        <div class="info-container__left col-md-6 d-flex justify-content-center align-items-center">
+          <img class="info-container__bg rounded-circle " src="@/assets/img/coffee.png" alt="coffee">
+        </div>
+        <div class="info-container__left col-md-6 d-flex p-0 align-items-center">
+          <div class="info-container__caption col-md-6" :style="{ width: this.canvasSize.width / 2 + 'px' }">          
+            <div class="info-container__caption__title">
+              <h3 class="mb-0 font-weight-bold">Stealth</h3>
+              <small>2018</small>            
+            </div>
+            <div class="info-container__caption__detail">
+              <p class="mt-3 mb-0">Role: Development</p>
+              <p class="m-0">Client: Gifu Museum</p>
+              <p class="mb-2">Tech: Unity, JavaScript</p>
+              <p class="d-md-block">detail</p>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-canvas {
-  position: fixed;
-}
+
 
 .info-container {
   height: 900px;
+
+  &__bg {
+    min-width: 350px;
+    // width: calc(100% / );
+    height: auto;
+  }
+
+  &__caption {
+    min-width: 350px;
+    z-index: 10;
+    font-size: 1.2em;
+
+    &__title {
+      color: #C69C6D;
+    }
+
+    &__detail {
+      color: #999999;
+    }
+  }
 }
 </style>
 
@@ -84,7 +116,7 @@ export default {
     // NOTE: Stop rendering
     if (this.gravityPattern !== undefined) {
       this.gravityPattern.stopAnimation()
-      this.gravityPattern.deleteAllBodyData()
+      // this.gravityPattern.killWorld()
     }
 
     window.removeEventListener('resize', this.handleResize)
@@ -109,7 +141,7 @@ export default {
     },
     initialize (data) {
       const canvas = document.getElementById('pattern3Canvas')
-      this.screenWidth = this.canvasSize.width * 3
+      this.screenWidth = this.canvasSize.width * 2
       this.screenHeight = 1800
       canvas.width = this.screenWidth
       canvas.height = this.screenHeight
