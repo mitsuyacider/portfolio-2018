@@ -3,7 +3,7 @@
   <nav-container />
     
   <div class="d-md-flex">
-    <div class="left-container col-md-6 d-flex d-flex justify-content-center align-items-center">
+    <div class="left-container col-md-6 d-flex justify-content-center align-items-center">
       <div class="canvas-container" id="p5Canvas"></div>
     </div>
     <div class="container right-container col-md-6 p-5">

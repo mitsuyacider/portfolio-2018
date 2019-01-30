@@ -8,21 +8,22 @@ export default class BasePhysicalPattern {
     this.canvas.style.width = String(canvas.width / 2) + 'px'
     this.canvas.style.height = String(canvas.height / 2) + 'px'
 
-    // module aliases
-    const Engine = Matter.Engine
-    this.engine = Engine.create()
+    // // module aliases
+    // const Engine = Matter.Engine
+    // this.engine = Engine.create()
 
-    const Events = Matter.Events
-    Events.on(this.engine, 'beforeUpdate', this.matterBeforeUpdate.bind(this))
-    Engine.run(this.engine)
-    this.mouse = Matter.Mouse.create(canvas)
+    // const Events = Matter.Events
+    // Events.on(this.engine, 'beforeUpdate', this.matterBeforeUpdate.bind(this))
+    // Engine.run(this.engine)
+    // this.mouse = Matter.Mouse.create(canvas)
 
     // touchstartに対応してたらtouchstart、してなければclick
     const mytap = window.ontouchstart === null ? 'touchstart' : 'click'
-    canvas.addEventListener(mytap, this.callbackOnClick.bind(this))
+    // canvas.addEventListener(mytap, this.callbackOnClick.bind(this))
 
     // NOTE: Local setting
     this.animationId = 0
+    this.creationTimerId = 0
     this.topBodyList = []
     this.bottomBodyList = []
     this.wordDataList = []
@@ -53,39 +54,62 @@ export default class BasePhysicalPattern {
     // NOTE: Delete from world if exist
     this.deleteAllBodyData()
 
+    // module aliases
+    const Engine = Matter.Engine
+    this.engine = Engine.create()
+
+    const Events = Matter.Events
+    Events.on(this.engine, 'beforeUpdate', this.matterBeforeUpdate.bind(this))
+    Engine.run(this.engine)
+    
+    this.prepareData(data, needBottomBody)
+  }
+
+  /*
+    NOTE: Recursive call to create body data.
+          This will be stopped when this animation finish.
+  */
+  prepareData (data, needBottomBody) {
+    const topCount = this.topBodyList.length
+    const bottomCount = this.bottomBodyList.length
+    const index = topCount + bottomCount
+
+    if (index > data.length - 1) return 
+
     const maxSize = Math.max(...data.map(m => m[1]))
     const minSize = Math.min(...data.map(m => m[1]))
+    const size = parseInt(data[index][1], 10)
+    const val = MathUtils.map(size, minSize, maxSize, this.minFontSize, this.maxFontSize)
+
+    let colorVal = Math.floor(MathUtils.map(size, minSize, maxSize, this.minColor, 255))
+    const color = 'rgb(' + colorVal + ',' + colorVal + ',' + colorVal + ')'
 
     // NOTE: Create word bodies
     const World = Matter.World
-    for (let i = 0; i < data.length; i++) {
-      const isTopBody = needBottomBody ? Math.floor(Math.random() * 2) === 0 : true
-      setTimeout(() => {
-        const size = parseInt(data[i][1], 10)
-        const val = MathUtils.map(size, minSize, maxSize, this.minFontSize, this.maxFontSize)
+    const wordData = {}
+    wordData.word = data[index][0]
+    wordData.size = val
+    wordData.color = color
 
-        let colorVal = Math.floor(MathUtils.map(size, minSize, maxSize, this.minColor, 255))
-        const color = 'rgb(' + colorVal + ',' + colorVal + ',' + colorVal + ')'
+    const isTopBody = needBottomBody ? Math.floor(Math.random() * 2) === 0 : true
+    const wordBody = this.createWordBody(wordData, isTopBody)
+    World.add(this.engine.world, wordBody)
 
-        const wordData = {}
-        wordData.word = data[i][0]
-        wordData.size = val
-        wordData.color = color
-
-        const wordBody = this.createWordBody(wordData, isTopBody)
-        World.add(this.engine.world, wordBody)
-        if (isTopBody) {
-          this.topBodyList.push(wordBody)
-        } else {
-          this.bottomBodyList.push(wordBody)
-        }
-      }, this.createDuration * i)
+    if (isTopBody) {
+      this.topBodyList.push(wordBody)
+    } else {
+      this.bottomBodyList.push(wordBody)
     }
+    
+    this.creationTimerId = setTimeout(() => {
+      this.prepareData(data, needBottomBody)
+    }, this.createDuration)    
   }
 
   stopAnimation () {
     // NOTE: Stop rendering
     window.cancelAnimationFrame(this.animationId)
+    window.clearTimeout(this.creationTimerId)
     // Events.on(this.engine, 'beforeUpdate', this.matterBeforeUpdate.bind(this))
   }
 

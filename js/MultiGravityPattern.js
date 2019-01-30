@@ -23,6 +23,11 @@ export default class MultiGravityPattern extends BasePhysicalPattern {
     this.minColor = config.minColor
   }
 
+  updateCanvasSize (width) {
+    this.screenWidth = width 
+    Matter.Body.setPosition(this.staticCircle, {x: this.screenWidth / 3, y: this.screenHeight / 2})
+  }
+
   initialize (data) {
     const needBottomBody = true
     super.initialize(data, needBottomBody)
@@ -30,12 +35,12 @@ export default class MultiGravityPattern extends BasePhysicalPattern {
     // NOTE: Create walls
     const World = Matter.World
     const Bodies = Matter.Bodies
-    const circleSize = this.screenWidth / 8
+    const circleSize = this.screenWidth / 9
     const ground = Bodies.rectangle(this.screenWidth / 2, this.screenHeight, this.screenWidth, 2, { isStatic: true })
     const leftWall = Bodies.rectangle(0, 0, 2, this.screenHeight * 2, { isStatic: true })
     const rightWall = Bodies.rectangle(this.screenWidth, 0, 2, this.screenHeight * 2, { isStatic: true })
     const upWall = Bodies.rectangle(this.screenWidth, 0, this.screenWidth * 2, 2, { isStatic: true })
-    this.staticCircle = Bodies.circle(this.screenWidth / 2, this.screenHeight / 2, circleSize, {isStatic: true})
+    this.staticCircle = Bodies.circle(this.screenWidth / 3, this.screenHeight / 2, circleSize, {isStatic: true})
     World.add(this.engine.world, [upWall, ground, leftWall, rightWall, this.staticCircle])
 
     const Events = Matter.Events
@@ -50,12 +55,14 @@ export default class MultiGravityPattern extends BasePhysicalPattern {
   }
 
   deleteAllBodyData () {
+    if (this.engine === undefined) return 
+    
+    const bodies = Matter.Composite.allBodies(this.engine.world)
     super.deleteAllBodyData()
 
     Matter.Events.off(this.engine)
-    const bodies = Matter.Composite.allBodies(this.engine.world)
-    if (bodies.length > 0) {
-      Matter.World.clear(this.engine, false)    
+    if (bodies !== undefined || bodies.length > 0) {
+      // Matter.World.clear(this.engine, false) 
     }
     Matter.Engine.clear(this.engine)
   }
