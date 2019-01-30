@@ -1,9 +1,10 @@
 import Vuex from 'vuex'
+import workData from '@/assets/data/data.json'
 
 const createStore = () => {
   return new Vuex.Store({
     state: () => ({
-			selectedWork: {}
+			selectedWork: workData["web"][0]
     }),
     mutations: {
 			setSelectedWork(state, data) {
