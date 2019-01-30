@@ -1,8 +1,24 @@
 <template>
-  <div class="main-container">
+  <div ref="main" class="main-container">
     <canvas id="pattern3Canvas" :width=screenWidth :height=screenHeight></canvas>
+    <div class="d-flex justify-content-center align-items-center">
+      <div class="info-container container d-flex justify-content-center align-items-center rounded-circle ">
+        <img class="rounded-circle" :style="{ height: this.canvasSize.width / 3 + 'px' }" src="@/assets/img/coffee.png" alt="coffee">
+      </div>
+    </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+canvas {
+  position: fixed;
+}
+
+.info-container {
+  height: 900px;
+}
+</style>
+
 
 <script>
 import MultiGravityPattern from '@/js/MultiGravityPattern'
@@ -70,18 +86,30 @@ export default {
       this.gravityPattern.stopAnimation()
       this.gravityPattern.deleteAllBodyData()
     }
+
+    window.removeEventListener('resize', this.handleResize)
   },
   mounted () {    
     if (process.browser) {
       // ここに window とか document を使った処理
 
     } 
+        
+    window.addEventListener('resize', this.handleResize)
   },
   methods: {
-    initialize (data) {
+    handleResize () {
+      console.log(this.$refs.main)
+      const newWidth = this.$refs.main.clientWidth * 3
 
+      this.canvasSize.width = newWidth / 3
+      if (this.gravityPattern !== undefined) {
+        this.gravityPattern.updateCanvasSize(newWidth)
+      }
+    },
+    initialize (data) {
       const canvas = document.getElementById('pattern3Canvas')
-      this.screenWidth = this.canvasSize.width * 2 - 20
+      this.screenWidth = this.canvasSize.width * 3
       this.screenHeight = 1800
       canvas.width = this.screenWidth
       canvas.height = this.screenHeight
@@ -98,6 +126,11 @@ export default {
     callbackOnClick (info) {
       info.type = 3
       this.$emit('callbackOnWordClick', info)
+    }
+  },
+  watch: {
+    canvasSize: function (newVal, oldVal) {
+      console.log(newVal)
     }
   }
 }
