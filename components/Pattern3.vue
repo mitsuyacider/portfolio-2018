@@ -5,15 +5,15 @@
       <!-- PC Display -->
       <div class="info-container m-0 d-none d-md-flex">
         <div class="info-container__left col-md-6 d-flex justify-content-center align-items-center">
-          <img ref="circle" class="info-container__bg rounded-circle " src="@/assets/img/coffee.png" alt="coffee">
+          <img ref="circle" class="info-container__left__bg rounded-circle " src="@/assets/img/coffee.png" alt="coffee">
         </div>
         <div class="info-container__right col-md-6 d-flex p-0 align-items-center">
           <div class="info-container__right__caption col-md-6" :style="{ width: this.canvasSize.width / 2 + 'px' }">          
-            <div class="info-container__caption__title">
+            <div class="info-container__right__caption__title">
               <h3 class="mb-0 font-weight-bold">Stealth</h3>
               <small>2018</small>            
             </div>
-            <div class="info-container__caption__detail">
+            <div class="info-container__right__caption__detail">
               <p class="mt-3 mb-0">Role: Development</p>
               <p class="m-0">Client: Gifu Museum</p>
               <p class="mb-2">Tech: Unity, JavaScript</p>
@@ -26,15 +26,15 @@
       <!-- Mobile  -->
       <div class="info-container m-0 d-block d-md-none">
         <div class="info-container__left d-flex justify-content-center align-items-center">
-          <img ref="circle" class="info-container__bg rounded-circle " src="@/assets/img/coffee.png" alt="coffee">
+          <img ref="circle" class="info-container__left__bg rounded-circle " src="@/assets/img/coffee.png" alt="coffee">
         </div>
         <div class="info-container__right p-0 d-flex align-items-center">
-          <div class="info-container__right__caption text-left">
-            <div class="info-container__caption__title">
+          <div class="info-container__right__caption mt-5 text-center">
+            <div class="info-container__right__caption__title">
               <h3 class="mb-0 font-weight-bold">Stealth Mobile</h3>
               <small>2018</small>            
             </div>
-            <div class="info-container__caption__detail">
+            <div class="info-container__right__caption__detail">
               <p class="mt-3 mb-0">Role: Development</p>
               <p class="m-0">Client: Gifu Museum</p>
               <p class="mb-2">Tech: Unity, JavaScript</p>
@@ -48,8 +48,8 @@
 
 <style lang="scss" scoped>
 
-$breakpoint-tablet: 980px;
-$breakpoint-mobile: 640px;
+$breakpoint-tablet: 769px;
+$breakpoint-mobile: 768px;
 
 @mixin max-screen($break-point) {
   @media screen and (max-width: $break-point) {
@@ -70,49 +70,24 @@ $breakpoint-mobile: 640px;
 }
 
 .info-container__right {
-  @include max-screen($breakpoint-mobile) {
-      min-width: 300px;
-    
-    &__caption {
-      margin: 0 auto;
-      z-index: 10;
-      font-size: 1.2em;
-    }
-  }
-}
-
-.info-container {
-    @include min-screen($breakpoint-tablet) {
-      height: 900px;
-    }
-
-    @include max-screen($breakpoint-mobile) {
-      height: 500px; 
-    }
-
-  &__bg {
-    @include min-screen($breakpoint-tablet) {
-      width: 350px; 
-    }
-
-    @include max-screen($breakpoint-mobile) {
-      margin-top: 50px;      
-      width: 180px; 
-    }
-  }
-
   &__caption {
     
     @include min-screen($breakpoint-tablet) {
       width: 350px; 
+      font-size: 1.2em;
     }
 
     @include max-screen($breakpoint-mobile) {
+      font-size: 1.0em;
       width: 300px; 
+      margin: 0 auto;
+
+      h3 {
+        font-size: 20px;
+      }
     }
 
     z-index: 10;
-    font-size: 1.2em;
 
     &__title {
       color: #C69C6D;
@@ -120,6 +95,32 @@ $breakpoint-mobile: 640px;
 
     &__detail {
       color: #999999;
+    }
+  }
+
+  @include max-screen($breakpoint-mobile) {
+      min-width: 300px;
+  }
+}
+
+.info-container__left {
+    @include min-screen($breakpoint-tablet) {
+      height: 900px;
+      width: 150px; 
+    }
+
+    @include max-screen($breakpoint-mobile) {
+      // height: 500px; 
+    }
+
+  &__bg {
+    @include min-screen($breakpoint-tablet) {
+      min-width: 350px;
+    }
+
+    @include max-screen($breakpoint-mobile) {
+      margin-top: 50px;      
+      width: 150px; 
     }
   }
 }
@@ -209,8 +210,8 @@ export default {
 
       this.canvasSize.width = newWidth
       if (this.gravityPattern !== undefined) {    
-        const ciecleSize = this.$refs.circle.clientWidth    
-        this.gravityPattern.updateCanvasSize(newWidth, ciecleSize)
+        const circleSize = this.$refs.circle.clientWidth    
+        this.gravityPattern.updateCanvasSize(newWidth, circleSize)
       }
     },
     initialize (data) {
@@ -230,10 +231,11 @@ export default {
         this.gravityPattern = undefined;
       }
 
-      const ciecleSize = this.$refs.circle.clientWidth    
+      const circleSize = this.$refs.circle.clientWidth
+      console.log("circlesize " + circleSize)   
       this.gravityPattern = new MultiGravityPattern(canvas)
       this.gravityPattern.setDelegate(this.callbackOnClick)
-      this.gravityPattern.initialize(data, ciecleSize)
+      this.gravityPattern.initialize(data, circleSize)
     },
     callbackOnClick (info) {
       info.type = 3

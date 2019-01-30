@@ -59,6 +59,7 @@ export default class MultiGravityPattern extends BasePhysicalPattern {
       this.maxFontSize = 60
       this.minFontSize = 30
     } else {
+      console.log("***" + size)
       x  = this.screenWidth / 4
       y = this.screenHeight / 2
     }
