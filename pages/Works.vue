@@ -3,7 +3,7 @@
   <div class="nav-main col-md-2 pl-4  d-none d-md-block">
     <works-menu v-on:tappedWork="onClickWork" />
   </div>
-  <div ref="project" class="project-container col-md-10 col-xs-12">
+  <div ref="project" class="project-container col-md-10 col-xs-12 p-0">
     <pattern-1 ref="pattern" v-if="animationPattern === 1" v-on:callbackOnWordClick=onWordClick />
     <pattern-2 ref="pattern" v-else-if="animationPattern === 2" v-on:callbackOnWordClick=onWordClick />
     <pattern-3 :canvasSize=canvasSize ref="pattern" v-else-if="animationPattern === 3" v-on:callbackOnWordClick=onWordClick />
@@ -49,8 +49,10 @@ export default {
   },
   mounted () {    
     this.canvasSize.width = this.$refs.project.clientWidth
+
   },
   methods: {
+
     onWordClick (info) {
       NativeCommunicator.postWordData(info)
     },
