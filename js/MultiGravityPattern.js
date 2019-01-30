@@ -49,6 +49,20 @@ export default class MultiGravityPattern extends BasePhysicalPattern {
 
   initialize (data, size) {
     const needBottomBody = true
+
+    let x = 0
+    let y = 0
+    if (screen.width <= 768) {
+      x = this.screenWidth / 2
+      y = 50 + 50 + 10 + size * 2 / 2
+      this.isMobile = true
+      this.maxFontSize = 60
+      this.minFontSize = 30
+    } else {
+      x  = this.screenWidth / 4
+      y = this.screenHeight / 2
+    }
+        
     super.initialize(data, needBottomBody)
 
     // NOTE: Create walls
@@ -59,8 +73,9 @@ export default class MultiGravityPattern extends BasePhysicalPattern {
     const leftWall = Bodies.rectangle(0, 0, 2, this.screenHeight * 2, { isStatic: true })
     this.rightWall = Bodies.rectangle(this.screenWidth, 0, 2, this.screenHeight * 2, { isStatic: true })
     const upWall = Bodies.rectangle(this.screenWidth, 0, this.screenWidth * 2, 2, { isStatic: true })
-    this.staticCircle = Bodies.circle(this.screenWidth / 4, 
-                                      this.screenHeight / 2, 
+
+    this.staticCircle = Bodies.circle(x, 
+                                      y, 
                                       this.circleSize, 
                                       {
                                         isStatic: true,

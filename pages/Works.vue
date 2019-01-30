@@ -49,7 +49,7 @@ export default {
   },
   mounted () {    
     this.canvasSize.width = this.$refs.project.clientWidth
-
+    this.loadData('mediaart')
   },
   methods: {
 

@@ -28,7 +28,7 @@
         <div class="info-container__left d-flex justify-content-center align-items-center">
           <img ref="circle" class="info-container__bg rounded-circle " src="@/assets/img/coffee.png" alt="coffee">
         </div>
-        <div class="info-container__right mt-4 p-0 d-flex align-items-center">
+        <div class="info-container__right p-0 d-flex align-items-center">
           <div class="info-container__right__caption text-left">
             <div class="info-container__caption__title">
               <h3 class="mb-0 font-weight-bold">Stealth Mobile</h3>
@@ -75,8 +75,9 @@ $breakpoint-mobile: 640px;
     
     &__caption {
       margin: 0 auto;
+      z-index: 10;
+      font-size: 1.2em;
     }
-
   }
 }
 
@@ -95,7 +96,7 @@ $breakpoint-mobile: 640px;
     }
 
     @include max-screen($breakpoint-mobile) {
-      margin-top: 20px;      
+      margin-top: 50px;      
       width: 180px; 
     }
   }
@@ -209,7 +210,6 @@ export default {
       this.canvasSize.width = newWidth
       if (this.gravityPattern !== undefined) {    
         const ciecleSize = this.$refs.circle.clientWidth    
-        console.log(ciecleSize)
         this.gravityPattern.updateCanvasSize(newWidth, ciecleSize)
       }
     },
@@ -217,6 +217,11 @@ export default {
       const canvas = document.getElementById('pattern3Canvas')
       this.screenWidth = this.canvasSize.width * 2
       this.screenHeight = 1800
+
+      if (screen.width <= 768) {
+        this.screenHeight = (screen.height - 94) * 2
+      } 
+
       canvas.width = this.screenWidth
       canvas.height = this.screenHeight
       if (this.gravityPattern !== undefined) {
