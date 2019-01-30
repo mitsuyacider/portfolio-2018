@@ -6,7 +6,7 @@
     <div class="left-container col-md-6 d-flex justify-content-center align-items-center">
       <div class="canvas-container" id="p5Canvas"></div>
     </div>
-    <div class="container right-container col-md-6 p-5">
+    <div class="container right-container col-md-6 p-4">
       <h2>Mitsuya WATANABE</h2>
       <p class="right-container__passage text-justify mt-5">
          I am IMitusya Watanabe from Japan. 
