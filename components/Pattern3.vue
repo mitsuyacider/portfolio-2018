@@ -7,6 +7,7 @@
         <div class="info-container__left col-md-6 d-flex justify-content-center align-items-center">
           <img ref="circle" class="info-container__left__bg rounded-circle " src="@/assets/img/coffee.png" alt="coffee">
         </div>
+
         <div class="info-container__right col-md-6 d-flex p-0 align-items-center">
           <div class="info-container__right__caption col-md-6" :style="{ width: this.canvasSize.width / 2 + 'px' }">          
             <div class="info-container__right__caption__title">
@@ -99,23 +100,20 @@ $breakpoint-mobile: 768px;
   }
 
   @include max-screen($breakpoint-mobile) {
-      min-width: 300px;
+      // min-width: 300px;
   }
 }
 
 .info-container__left {
-    @include min-screen($breakpoint-tablet) {
-      height: 900px;
-      width: 150px; 
-    }
-
-    @include max-screen($breakpoint-mobile) {
-      // height: 500px; 
-    }
+  @include min-screen($breakpoint-tablet) {
+    height: 900px;
+    width: 150px; 
+  }
 
   &__bg {
     @include min-screen($breakpoint-tablet) {
-      min-width: 350px;
+      // min-width: 350px;
+      // width: 500px; 
     }
 
     @include max-screen($breakpoint-mobile) {
@@ -196,12 +194,7 @@ export default {
 
     window.removeEventListener('resize', this.handleResize)
   },
-  mounted () {    
-    if (process.browser) {
-      // ここに window とか document を使った処理
-
-    } 
-        
+  mounted () {            
     window.addEventListener('resize', this.handleResize)
   },
   methods: {
@@ -219,8 +212,10 @@ export default {
       this.screenWidth = this.canvasSize.width * 2
       this.screenHeight = 1800
 
-      if (screen.width <= 768) {
+      let circleSize = this.$refs.circle.width
+      if (window.innerWidth <= 768) {
         this.screenHeight = (screen.height - 94) * 2
+        circleSize = this.$refs.circle.clientWidth
       } 
 
       canvas.width = this.screenWidth
@@ -231,8 +226,6 @@ export default {
         this.gravityPattern = undefined;
       }
 
-      const circleSize = this.$refs.circle.clientWidth
-      console.log("circlesize " + circleSize)   
       this.gravityPattern = new MultiGravityPattern(canvas)
       this.gravityPattern.setDelegate(this.callbackOnClick)
       this.gravityPattern.initialize(data, circleSize)

@@ -49,9 +49,10 @@ export default {
   },
   mounted () {    
     this.canvasSize.width = this.$refs.project.clientWidth
-    // this.loadData('mediaart')
+    this.loadData('mediaart')
   },
   methods: {
+
     onWordClick (info) {
       NativeCommunicator.postWordData(info)
     },
