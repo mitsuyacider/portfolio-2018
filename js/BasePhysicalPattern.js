@@ -207,7 +207,11 @@ export default class BasePhysicalPattern {
   }
 
   createWordBody (wordData, isTopBody) {
-    const isVertical = Math.floor(Math.random() * 2) === 0
+    // NOTE: Detect multi byte
+    //       https://qiita.com/graminume/items/2ac8dd9c32277fa9da64
+    const isMultiByte = wordData.word.match(/^[\u30a0-\u30ff\u3040-\u309f\u3005-\u3006\u30e0-\u9fcf]+$/)
+
+    const isVertical = isMultiByte ? Math.floor(Math.random() * 2) === 0 : 0  
     const Bodies = Matter.Bodies
     const x = Math.random() * this.screenWidth
     const offsetY = -10
@@ -215,10 +219,6 @@ export default class BasePhysicalPattern {
 
     // NOTE: Calculate text width from font family
     let index = Math.floor(Math.random() * this.fontList.length)
-
-    // NOTE: Detect multi byte
-    //       https://qiita.com/graminume/items/2ac8dd9c32277fa9da64
-    const isMultiByte = wordData.word.match(/^[\u30a0-\u30ff\u3040-\u309f\u3005-\u3006\u30e0-\u9fcf]+$/)
     
     let fontName = this.fontList[index]
     if (isMultiByte) {
