@@ -66,6 +66,8 @@ export default {
       this.showCollapse = false
       this.setSelectedWork(work)
       this.$emit('tappedWork', work)
+
+      this.$router.push('/')
     },
     ...mapActions([
       'setSelectedWork'

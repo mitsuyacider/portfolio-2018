@@ -1,8 +1,8 @@
 <template>
 <div class="main-container">
-  <nav-container />
+  <nav-container class="nav-container" />
     
-  <div class="d-md-flex">
+  <div class="d-md-flex about-container">
     <div class="left-container col-md-6 d-flex justify-content-center align-items-center">
       <div class="canvas-container" id="p5Canvas"></div>
     </div>
@@ -47,7 +47,7 @@
 <style lang="scss" scoped>
 .right-container {  
   &__passage {
-    font-size: 1.3em;
+    font-size: 1.1em;
     // color:white;
     // background-color: black;
   }
@@ -85,3 +85,12 @@ export default {
 }
 </script>
 
+<style lang="scss">
+.nav-container {
+  height: 59;
+}
+
+.about-container {
+  height: calc(100vh - 59px);
+}
+</style>

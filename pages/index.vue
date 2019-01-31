@@ -1,7 +1,7 @@
 <template>
   <div class="main-container">
     <nav-container class="nav-container" v-on:tappedWork="onTapWork" />
-    <works class="works-container"/>
+    <works class="works-container" />
   </div>
 </template>
 
