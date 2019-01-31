@@ -49,6 +49,8 @@ export default {
   },
   mounted () {    
     this.canvasSize.width = this.$refs.project.clientWidth
+    this.canvasSize.height = this.$refs.project.clientHeight
+    console.log(this.canvasSize.height)
     this.loadData('mediaart')
   },
   methods: {
@@ -76,10 +78,14 @@ export default {
 
 <style lang="scss" scoped>
 .menu-nav {  
-  height: 100vh;
+  height: 100%;
 }
 
 .mb-container {
   width: 100vw;
+}
+
+.project-container {
+  height: 100%;
 }
 </style>

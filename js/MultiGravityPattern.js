@@ -54,7 +54,7 @@ export default class MultiGravityPattern extends BasePhysicalPattern {
     let y = 0
     if (window.innerWidth <= 768) {
       x = this.screenWidth / 2
-      y = 50 + 50 + 10 + size * 2 / 2
+      y = 50 + 50 + size * 2 / 2
       this.isMobile = true
       this.maxFontSize = 60
       this.minFontSize = 30

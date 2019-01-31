@@ -3,7 +3,7 @@
     <canvas class="position-fixed" id="pattern3Canvas" :width=screenWidth :height=screenHeight></canvas>
       
       <!-- PC Display -->
-      <div class="info-container m-0 d-none d-md-flex">
+      <div class="info-container m-0 d-none d-md-flex" :style="{ height: this.canvasSize.height + 'px' }">
         <div class="info-container__left col-md-6 d-flex justify-content-center align-items-center">
           <img 
             ref="circle" 
@@ -115,7 +115,7 @@ $breakpoint-mobile: 768px;
 
 .info-container__left {
   @include min-screen($breakpoint-tablet) {
-    height: 900px;
+    height: 100%;
     width: 150px; 
   }
 
@@ -193,7 +193,7 @@ export default {
     initialize (data) {
       const canvas = document.getElementById('pattern3Canvas')
       this.screenWidth = this.canvasSize.width * 2
-      this.screenHeight = 1800
+      this.screenHeight = this.canvasSize.height * 2
 
       const circleSize = this.getCircleSize()
       canvas.width = this.screenWidth

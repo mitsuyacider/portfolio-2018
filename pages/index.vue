@@ -1,7 +1,7 @@
 <template>
   <div class="main-container">
-    <nav-container v-on:tappedWork="onTapWork" />
-    <works />
+    <nav-container class="nav-container" v-on:tappedWork="onTapWork" />
+    <works class="works-container"/>
   </div>
 </template>
 
@@ -22,5 +22,12 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+.nav-container {
+  height: 59;
+}
+
+.works-container {
+  height: calc(100vh - 59px);
+}
 </style>
