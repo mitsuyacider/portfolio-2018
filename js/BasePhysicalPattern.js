@@ -24,6 +24,16 @@ export default class BasePhysicalPattern {
     this.screenHeight = canvas.height
     this.delegate = undefined
 
+    this.fontList = [
+      'sans-serif',
+      'arial',
+      'arial black',
+      'Century Gothic',
+      'Impact',
+      'Tahoma',
+      'Georgia',
+      'Times New Roman'
+    ]
   }
 
   setDelegate (callback) {
@@ -120,6 +130,7 @@ export default class BasePhysicalPattern {
 
       if (part.render.text) {
         let fontsize = 30
+        // console.log(fontfamily)
         let fontfamily = part.render.text.family || 'serif'
         let color = part.render.text.color || '#FFFFFF'
 
@@ -192,7 +203,12 @@ export default class BasePhysicalPattern {
     const offsetY = -10
     const y = isTopBody ? 0 : this.screenHeight + offsetY
 
-    let width = wordData.size * wordData.word.length
+    // NOTE: Calculate text width from font family
+    const index = Math.floor(Math.random() * this.fontList.length)
+    const fontName = this.fontList[index]
+    this.context.font = this.context.font = wordData.size + 'px ' + fontName
+
+    let width = this.context.measureText(wordData.word).width
     let height = wordData.size
 
     if (isVertical) {
@@ -216,7 +232,8 @@ export default class BasePhysicalPattern {
             content: wordData.word,
             size: wordData.size,
             isVertical: isVertical,
-            color: wordData.color
+            color: wordData.color,
+            family: fontName
           }
         }
       })
@@ -258,7 +275,7 @@ export default class BasePhysicalPattern {
 
     this.context.lineWidth = 1.5
     if (body.isStatic) {
-      this.context.strokeStyle = this.isDebug ? '#0000ff' : '#00ff00'
+      this.context.strokeStyle = this.isDebug ? '#0000ff' : '#00ff0000'
     } else {
       this.context.strokeStyle = this.isDebug ? '#00ff00' : '#0000ff00'
     }
