@@ -34,6 +34,17 @@ export default class BasePhysicalPattern {
       'Georgia',
       'Times New Roman'
     ]
+
+    this.japaneseFontList = [
+      'serif',
+      'Hiragino Kaku Gothic Std',
+      'Hiragino Maru Gothic Pro',
+      'YuMincho +36p Kana',
+      'YuKyokasho',
+      'Tsukushi B Round Gothic',
+      'Toppan Bunkyu Gothic',
+      'Toppan Bunkyu Midashi Gothic'
+    ]
   }
 
   setDelegate (callback) {
@@ -130,8 +141,8 @@ export default class BasePhysicalPattern {
 
       if (part.render.text) {
         let fontsize = 30
-        let fontfamily = part.render.text.family || 'serif'
-        let color = part.render.text.color || '#FFFFFF'
+        let fontfamily = part.render.text.family
+        let color = part.render.text.color
 
         if (part.render.text.size) {
           fontsize = part.render.text.size
@@ -203,8 +214,17 @@ export default class BasePhysicalPattern {
     const y = isTopBody ? 0 : this.screenHeight + offsetY
 
     // NOTE: Calculate text width from font family
-    const index = Math.floor(Math.random() * this.fontList.length)
-    const fontName = this.fontList[index]
+    let index = Math.floor(Math.random() * this.fontList.length)
+
+    // NOTE: Detect multi byte
+    //       https://qiita.com/graminume/items/2ac8dd9c32277fa9da64
+    const isMultiByte = wordData.word.match(/^[\u30a0-\u30ff\u3040-\u309f\u3005-\u3006\u30e0-\u9fcf]+$/)
+    
+    let fontName = this.fontList[index]
+    if (isMultiByte) {
+      index = Math.floor(Math.random() * this.japaneseFontList.length)
+      fontName = this.japaneseFontList[index]
+    }
     this.context.font = this.context.font = wordData.size + 'px ' + fontName
 
     let width = this.context.measureText(wordData.word).width
