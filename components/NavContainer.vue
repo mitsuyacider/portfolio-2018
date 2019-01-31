@@ -12,9 +12,15 @@
         <!-- <a href="mailto:mitsuya.watanabe85@gmail.com"><b-btn class="ml-2" v-b-toggle variant="primary">Contact</b-btn></a> -->
         <b-collapse v-model="showCollapse" id="collapse1" class="w-100 mt-2">
           <b-card>
-            <ul>
-                <li v-for="(work, index) in works" :key=work.name>
-                    <button @click="tappedWork(work)"> {{ work.name }} + {{index}}</button>
+            <ul class="list-unstyled">
+                <li class="border" v-for="(work) in works['web']" :key=work.name>
+                    <button class="text-left" @click="tappedWork(work)"> {{ work.name }}</button>
+                </li>
+                <li class="border" v-for="(work) in works['mobile']" :key=work.name>
+                    <button class="text-left" @click="tappedWork(work)"> {{ work.name }}</button>
+                </li>
+                <li class="border" v-for="(work) in works['r_d']" :key=work.name>
+                    <button class="text-left" @click="tappedWork(work)"> {{ work.name }}</button>
                 </li>
             </ul>
           </b-card>
