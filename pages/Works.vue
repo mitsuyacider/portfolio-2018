@@ -50,7 +50,6 @@ export default {
   mounted () {    
     this.canvasSize.width = this.$refs.project.clientWidth
     this.canvasSize.height = this.$refs.project.clientHeight
-    console.log(this.canvasSize.height)
     this.loadData('mediaart')
   },
   methods: {
@@ -81,11 +80,17 @@ export default {
   height: 100%;
 }
 
+.nav-main {
+  background: #f7f3e9;
+}
+
 .mb-container {
   width: 100vw;
 }
 
 .project-container {
+  background: #4a485d;
   height: 100%;
 }
+
 </style>

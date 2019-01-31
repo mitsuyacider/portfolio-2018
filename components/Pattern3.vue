@@ -100,11 +100,16 @@ $breakpoint-mobile: 768px;
     z-index: 10;
 
     &__title {
-      color: #C69C6D;
+      color: #a98667;      
     }
 
     &__detail {
-      color: #999999;
+      color: #f7f3e9;
+
+      >a {
+        color: #b8be96;
+        text-decoration: underline solid #b8be96;
+      }      
     }
   }
 

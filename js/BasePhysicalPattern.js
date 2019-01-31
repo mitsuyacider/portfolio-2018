@@ -130,7 +130,6 @@ export default class BasePhysicalPattern {
 
       if (part.render.text) {
         let fontsize = 30
-        // console.log(fontfamily)
         let fontfamily = part.render.text.family || 'serif'
         let color = part.render.text.color || '#FFFFFF'
 
@@ -265,7 +264,8 @@ export default class BasePhysicalPattern {
     // NOTE: Draw rectangle
     this.context.beginPath()
     var vertices = body.vertices
-    this.context.fillStyle = body.isStatic ? '#ff000000' : '#000000'
+    this.context.fillStyle = body.isStatic ? '#ff000000' : '#231815'
+
     this.context.moveTo(vertices[0].x, vertices[0].y)
     for (var j = 1; j < vertices.length; j += 1) {
       this.context.lineTo(vertices[j].x, vertices[j].y)
