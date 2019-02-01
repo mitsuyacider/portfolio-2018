@@ -51,7 +51,7 @@
                   "name" : "Japan Media Art Festival in Aska Kashihara",
                   "file" : "mediaart",
                   "year" : "2019",
-                  "tech" : "Vue, canvas animation",
+                  "tech" : "Vue.js, canvas animation",
                   "role" : "Developmet",
                   "client" : "TOPPAN PRINTING CO., LTD.",
                   "link" : "http://mediaarts-asuka-kashihara.com/"
@@ -60,7 +60,7 @@
                   "name" : "Machikon",
                   "file" : "machikon",
                   "year" : "2019",
-                  "tech" : "Vue, Bluetooth",
+                  "tech" : "Vue.js, Bluetooth",
                   "role" : "Developmet",
                   "client" : "Kutami, Inc.",
                   "link" : "under construction"
@@ -69,7 +69,7 @@
                   "name" : "segatubers",
                   "file" : "segatubers",
                   "year" : "2019",
-                  "tech" : "Vue, Node.js, image processing",
+                  "tech" : "Vue.js, Express, Node.js, image processing",
                   "role" : "Developmet",
                   "client" : "SEGA ENTERTAINMENT Co. Ltd.",
                   "link" : "https://segatubers.com/"
@@ -78,7 +78,7 @@
                   "name" : "Ningen-Tetris",
                   "file" : "tetris",
                   "year" : "2018",
-                  "tech" : "Vue, TensorFlow PoseNet",
+                  "tech" : "Vue.js, TensorFlow PoseNet",
                   "role" : "Developmet",
                   "client" : "Personal",
                   "link" : "https://ningen-tetris.herokuapp.com"
@@ -86,22 +86,43 @@
               ],
   "r_d" : [
                 {
+                  "name" : "LIT System",
+                  "file" : "lit",
+                  "year" : "2015",
+                  "tech" : "Objective-C, Arduino",
+                  "role" : "Developmet, hardware",
+                  "client" : "GOCCO.",
+                  "link" : "https://vimeo.com/99097218"
+                },
+                {
+                  "name" : "Bean Sorting Machine",
+                  "file" : "beans",
+                  "year" : "2015",
+                  "tech" : "Vue.js, TensorFlow PoseNet",
+                  "role" : "Developmet, hardware",
+                  "client" : "Gifu City",
+                  "link" : "https://vimeo.com/163784349"
+                },
+                {
                   "name" : "xmas-fireworks",
                   "file" : "xmas",
                   "year" : "2018",
-                  "tech" : "Vue, TensorFlow PoseNet",
+                  "tech" : "Vue.js, TensorFlow PoseNet",
                   "role" : "Developmet",
                   "client" : "Personal",
                   "link" : "https://xmas-fireworks.herokuapp.com"
-                },
-                {
-                  "name" : "Bean Sorting",
-                  "file" : "beans"
-                },
-                {
-                  "name" : "English-Card",
-                  "file" : "english"
                 }
-              ]
+              ],
+  "tmp" : [
+    {
+      "name" : "English-Card",
+      "file" : "english",
+      "year" : "2018",
+      "tech" : "Vue.js, Node.js, Express, heroku, MongoDB",
+      "role" : "Developmet",
+      "client" : "Personal",
+      "link" : "https://english-card.herokuapp.com"
+    }    
+  ]    
 
 }
