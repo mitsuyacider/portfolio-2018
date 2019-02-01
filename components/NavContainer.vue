@@ -4,7 +4,7 @@
     <!-- サブコンテナ -->
     <div class="container ml-0">
       <!-- ブランド名 -->
-      <router-link class="navbar-brand" to="/">Mitsuya WATANABE<span class="sr-only">(current)</span></router-link>
+      <!-- <router-link class="navbar-brand" to="/"><span class="sr-only">(current)</span></router-link> -->
 
       <div class="d-md-none container pl-0 pr-0">
         <b-btn v-b-toggle.collapse1 variant="primary">Works</b-btn>
@@ -30,8 +30,8 @@
       <!-- ナビゲーション -->
       <div class="collapse navbar-collapse" id="navbar-content">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <nuxt-link to="/">Works</nuxt-link>
+          <li class="nav-item ml-0">
+            <nuxt-link class="ml-0" to="/">Works</nuxt-link>
           </li>
           <li class="nav-item">
             <nuxt-link to="/about">About</nuxt-link>

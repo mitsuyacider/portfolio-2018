@@ -23,7 +23,7 @@
               <p class="mt-3 mb-0">Role: {{ selectedWork.role }}</p>
               <p class="m-0">Client: {{ selectedWork.client }}</p>
               <p class="mb-2">Tech: {{ selectedWork.tech }}</p>
-              <a :href=selectedWork.link target="blank"> detail </a> 
+              <a :href=selectedWork.link target="blank"> more </a> 
             </div>
           </div>
         </div>
@@ -48,7 +48,7 @@
               <p class="mt-3 mb-0">Role: {{ selectedWork.role }}</p>
               <p class="m-0">Client: {{ selectedWork.client }}</p>
               <p class="mb-2">Tech: {{ selectedWork.tech }}</p>
-              <a :href=selectedWork.link target="blank"> detail </a> 
+              <a :href=selectedWork.link target="blank"> more </a> 
             </div>
           </div>
         </div>
@@ -100,15 +100,17 @@ $breakpoint-mobile: 768px;
     z-index: 10;
 
     &__title {
-      color: #a98667;      
+      color: #f7f3e9;      
     }
 
     &__detail {
       color: #f7f3e9;
 
       >a {
-        color: #b8be96;
-        text-decoration: underline solid #b8be96;
+        color: #a98667;
+        // #b8be96
+        // #a98667
+        text-decoration: underline solid #a98667;
       }      
     }
   }

@@ -23,11 +23,12 @@ export default {
 </script>
 
 <style lang="scss">
+
 .nav-container {
-  height: 59;
+  height: 56;
 }
 
 .works-container {
-  height: calc(100vh - 59px);
+  height: calc(100vh - 56px);
 }
 </style>

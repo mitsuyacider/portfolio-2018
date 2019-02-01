@@ -96,8 +96,12 @@ export default class BasePhysicalPattern {
     const val = MathUtils.map(size, minSize, maxSize, this.minFontSize, this.maxFontSize)
 
     let colorVal = Math.floor(MathUtils.map(size, minSize, maxSize, this.minColor, 255))
-    const color = 'rgb(' + colorVal + ',' + colorVal + ',' + colorVal + ')'
 
+    // rgb(169, 134, 103)
+    // rgb(184, 190, 150)
+    // const color = 'rgb(' + colorVal + ',' + colorVal + ',' + colorVal + ')'
+    const color = 'rgba(' + 184 + ',' + 190 + ',' + 150 + ',' + colorVal / 255 + ')'
+    // const color = 'rgba(' + 169 + ',' + 134 + ',' + 103 + ',' + colorVal / 255 + ')'
     // NOTE: Create word bodies
     const World = Matter.World
     const wordData = {}
