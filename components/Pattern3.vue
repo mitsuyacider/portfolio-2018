@@ -229,9 +229,13 @@ export default {
       canvas.height = this.screenHeight
 
       if (window.innerWidth <= 768) {
+        // NOTE: Do not use following code.
         // this.screenHeight = (screen.height - 56) * 2
+
+        // NOTE: Use this code instead of above.
+        //       Mobile device has tool bar.
         this.screenHeight = (window.innerHeight - 56) * 2
-        canvas.height = this.screenHeight        
+        canvas.height = this.screenHeight
       }   
 
       if (this.gravityPattern !== undefined) {
