@@ -77,6 +77,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  appearance: none;  
+}
+
 .nav-item a {
   color: white;
   margin-left: 10px;  
