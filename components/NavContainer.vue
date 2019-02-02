@@ -10,7 +10,7 @@
         <b-btn v-b-toggle.collapse1 variant="primary">Works</b-btn>
         <nuxt-link to="/about"><b-btn class="ml-2" v-b-toggle variant="primary">About</b-btn></nuxt-link>
         <!-- <a href="mailto:mitsuya.watanabe85@gmail.com"><b-btn class="ml-2" v-b-toggle variant="primary">Contact</b-btn></a> -->
-        <b-collapse v-model="showCollapse" id="collapse1" class="w-100 mt-2">
+        <b-collapse v-model="showCollapse" id="collapse1" class="collapse-container position-absolute mx-auto w-100 mt-2">
           <b-card>
             <ul class="list-unstyled">
                 <li class="border" v-for="(work) in works['web']" :key=work.name>
@@ -84,6 +84,11 @@ export default {
 
 .navbar-nav {
   width: 100%;
+}
+
+.collapse-container {
+  left:0;
+  right: 0;  
 }
 
 </style>
