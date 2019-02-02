@@ -190,29 +190,13 @@ export default class BasePhysicalPattern {
           // #a98667      
           let isInBody = this.isCursorInBody(part)
           if (isInBody) {
-            this.context.fillStyle = '#231815'
+            this.context.fillStyle = '#343A40'
+            // #343A40
             // fbdbd4 // 白
             // 6a3906 // 茶色
             // 915673 // 紫
             // 231815
-
-          //   if (isInBody) {
-          //     this.context.lineWidth = 2.5
-          //     this.context.fillStyle = '#01cf9c'
-          //     this.context.strokeStyle = '#01cf9c'
-          //   } else {
-          //     this.context.lineWidth = 10.5
-          //     this.context.fillStyle = body.isStatic ? '#ff000000' : '#fbdbd4'
-          //     this.context.strokeStyle = '#915673'
-          //   }
-          // } else {
-          //   this.context.fillStyle = body.isStatic ? '#ff000000' : '#231815'
-          //   this.context.strokeStyle = '#00ff0000'
-          // }
-
-
-
-
+            // 1A91A9
           } else {
             this.context.fillStyle = '#6a3906'
           }
@@ -356,14 +340,24 @@ export default class BasePhysicalPattern {
         // #a98667      
       isInBody = this.isCursorInBody(body)
       if (isInBody) {
-        this.context.fillStyle = '#01cf9c'
+        // this.context.lineWidth = 2.5
+        this.context.fillStyle = '#24A2B6'
+
+        // #24A2B6
+        // 1A91A9
+        // #6B706E
+        // 01cf9c
+        // #1A91A9
+        this.context.strokeStyle = '#6B706E'
       } else {
+        // this.context.lineWidth = 10.5
         this.context.fillStyle = body.isStatic ? '#ff000000' : '#fbdbd4'
       }
     } else {
       this.context.fillStyle = body.isStatic ? '#ff000000' : '#231815'
     }
 
+    this.context.strokeStyle = '#00ff0000'
     this.context.moveTo(vertices[0].x, vertices[0].y)
     for (var j = 1; j < vertices.length; j += 1) {
       this.context.lineTo(vertices[j].x, vertices[j].y)
