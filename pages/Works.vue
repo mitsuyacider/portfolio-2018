@@ -67,11 +67,14 @@ export default {
         this.$refs.pattern.destroy()
         const a = document.createElement('a')
         a.setAttribute('href', info.link)
-        var dispatch = document.createEvent("HTMLEvents");
+        a.setAttribute('target', '_blank')
+        const dispatch = document.createEvent("HTMLEvents");
         dispatch.initEvent("click", true, true);
         a.dispatchEvent(dispatch);
-      } else if (ua.indexOf('iPad') > 0 || ua.indexOf('Android') > 0) {
+      } else if (ua.indexOf('iPad') > 0 || 
+                 ua.indexOf('Android') > 0) {
           // タブレット用コード
+          window.open(info.link);
       } else {
           // PC用コード
           window.open(info.link);

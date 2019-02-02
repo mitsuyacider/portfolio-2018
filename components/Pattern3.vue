@@ -68,7 +68,7 @@
             <p class="mt-3 mb-0">Role: {{ selectedWork.role }}</p>
             <p class="m-0">Client: {{ selectedWork.client }}</p>
             <p class="mb-2">Tech: {{ selectedWork.tech }}</p>
-            <a class="detail-target" :href=selectedWork.link target="blank"> more </a> 
+            <a class="detail-target" :href=selectedWork.link> more </a> 
           </div>
         </div>
       </div>
@@ -118,7 +118,7 @@ $breakpoint-mobile: 768px;
 
     @include max-screen($breakpoint-mobile) {
       font-size: 1.0em;
-      width: 400px; 
+      width: 300px; 
       margin: 0 auto;
 
       h3 {
@@ -127,17 +127,26 @@ $breakpoint-mobile: 768px;
     }
 
     &__title {
+      @include min-screen($breakpoint-tablet) {
+        >h3 {
+          width: 400px;
+        }
+      }
       color: #f7f3e9;      
     }
 
     &__detail {
       color: #f7f3e9;
-      width: 400px;
+      width: 300px;
 
       >a {
         color: #a98667;
         text-decoration: underline solid #a98667;
-      }      
+      }
+      >a:hover {
+        color: #01cf9c;
+        text-decoration: underline solid #01cf9c;        
+      }
     }
   }
 

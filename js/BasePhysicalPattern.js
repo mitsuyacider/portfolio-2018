@@ -188,7 +188,34 @@ export default class BasePhysicalPattern {
         if (part.render.text && part.render.text.link.length > 1) {
           // #b8be96
           // #a98667      
-          this.context.fillStyle = '#6a3906'
+          let isInBody = this.isCursorInBody(part)
+          if (isInBody) {
+            this.context.fillStyle = '#231815'
+            // fbdbd4 // 白
+            // 6a3906 // 茶色
+            // 915673 // 紫
+            // 231815
+
+          //   if (isInBody) {
+          //     this.context.lineWidth = 2.5
+          //     this.context.fillStyle = '#01cf9c'
+          //     this.context.strokeStyle = '#01cf9c'
+          //   } else {
+          //     this.context.lineWidth = 10.5
+          //     this.context.fillStyle = body.isStatic ? '#ff000000' : '#fbdbd4'
+          //     this.context.strokeStyle = '#915673'
+          //   }
+          // } else {
+          //   this.context.fillStyle = body.isStatic ? '#ff000000' : '#231815'
+          //   this.context.strokeStyle = '#00ff0000'
+          // }
+
+
+
+
+          } else {
+            this.context.fillStyle = '#6a3906'
+          }
         } else {
           this.context.fillStyle = color
         }
@@ -308,17 +335,45 @@ export default class BasePhysicalPattern {
     }
   }
 
+  isCursorInBody (body) {
+
+    const query = Matter.Query.point(Matter.Composite.allBodies(this.engine.world), this.mouse.position)
+
+    // NOTE: Bodyがクリックされえていれば、Body情報がqueryに入っている
+    return query[0] === body
+
+    // var vertices = body.vertices
+    // return this.mouse.position.x >= vertices[0].x && 
+    //        this.mouse.position.x <= vertices[1].x &&
+    //        this.mouse.position.y >= vertices[0].y &&
+    //        this.mouse.position.y <= vertices[2].y
+  }
+
   drawRectangle (body) {
     // NOTE: Draw rectangle
     this.context.beginPath()
     var vertices = body.vertices
 
+     
+
+    let isInBody = false
+
     if (body.render.text && body.render.text.link.length > 1) {
         // #b8be96
         // #a98667      
-      this.context.fillStyle = body.isStatic ? '#ff000000' : '#fbdbd4'
+      isInBody = this.isCursorInBody(body)
+      if (isInBody) {
+        this.context.lineWidth = 2.5
+        this.context.fillStyle = '#01cf9c'
+        this.context.strokeStyle = '#01cf9c'
+      } else {
+        this.context.lineWidth = 10.5
+        this.context.fillStyle = body.isStatic ? '#ff000000' : '#fbdbd4'
+        this.context.strokeStyle = '#915673'
+      }
     } else {
       this.context.fillStyle = body.isStatic ? '#ff000000' : '#231815'
+      this.context.strokeStyle = '#00ff0000'
     }
 
     this.context.moveTo(vertices[0].x, vertices[0].y)
@@ -328,12 +383,12 @@ export default class BasePhysicalPattern {
     this.context.lineTo(vertices[0].x, vertices[0].y)
     this.context.closePath()
 
-    this.context.lineWidth = 1.5
+    
     if (body.isStatic && body.render.name === 'circle' && this.shouldExpand) {
+      this.context.lineWidth = 2.5
       this.context.strokeStyle = this.isDebug ? '#0000ff' : '#b8be96'
-    } else {
-      this.context.strokeStyle = '#00ff0000'
     }
+
     this.context.stroke()
     this.context.fill()
   }
