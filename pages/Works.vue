@@ -55,7 +55,6 @@ export default {
   methods: {
 
     onWordClick (info) {
-      console.log("works.vue : onclick: " + info.link)
       // NOTE: Navigate to site with info.link
       var ua = navigator.userAgent;
       if (ua.indexOf('iPhone') > 0 || 

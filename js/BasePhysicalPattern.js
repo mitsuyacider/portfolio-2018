@@ -336,17 +336,10 @@ export default class BasePhysicalPattern {
   }
 
   isCursorInBody (body) {
-
     const query = Matter.Query.point(Matter.Composite.allBodies(this.engine.world), this.mouse.position)
 
     // NOTE: Bodyがクリックされえていれば、Body情報がqueryに入っている
     return query[0] === body
-
-    // var vertices = body.vertices
-    // return this.mouse.position.x >= vertices[0].x && 
-    //        this.mouse.position.x <= vertices[1].x &&
-    //        this.mouse.position.y >= vertices[0].y &&
-    //        this.mouse.position.y <= vertices[2].y
   }
 
   drawRectangle (body) {
