@@ -2,77 +2,77 @@
   <div ref="main" class="main-container">
     <canvas class="position-fixed" id="pattern3Canvas" :width=screenWidth :height=screenHeight></canvas>
       
-      <!-- PC Display -->
-      <div class="info-container m-0 d-none d-md-flex" :style="{ height: this.canvasSize.height + 'px' }">
-        <div class="info-container__left col-md-6 d-flex justify-content-center align-items-center">
-          <img 
-            ref="circle" 
-            class="info-container__left__bg rounded-circle " 
-            :src="require('@/assets/img/' + selectedWork.file + '.png')"
-            alt="coffee"
-            :style="{ width: this.canvasSize.width / 4 + 'px' }">
-        </div>
+    <!-- PC Display -->
+    <div class="info-container m-0 d-none d-md-flex" :style="{ height: this.canvasSize.height + 'px' }">
+      <div class="info-container__left col-md-6 d-flex justify-content-center align-items-center">
+        <img 
+          ref="circle" 
+          class="info-container__left__bg rounded-circle " 
+          :src="require('@/assets/img/' + selectedWork.file + '.png')"
+          alt="coffee"
+          :style="{ width: this.canvasSize.width / 4 + 'px' }">
+      </div>
 
-        <div class="info-container__right col-md-6 d-flex p-0 align-items-center">
-          <div class="container row">
-            <div class="info-container__right__caption__title col-md-12 p-0">
-              <h3 class="mb-0 font-weight-bold">{{ selectedWork.name }}</h3>
-              <small>{{ selectedWork.year }}</small>            
-            </div>
-            <div class="info-container__right__caption" :style="{ width: this.canvasSize.width / 2 + 'px' }">          
-              <div class="info-container__right__caption__detail mt-3">
-                <div class="row d-flex">
-                  <div class="static-caption col-md-2">
-                    <p class="m-0">Role: </p>
-                  </div>
-                  <div class="information col-md-10">
-                    <p class="ml-1 mb-0">{{ selectedWork.role }}</p>
-                  </div>
-                  <div class="static-caption col-md-2">
-                    <p class="m-0">Client: </p>
-                  </div>
-                  <div class="information col-md-10">
-                    <p class="ml-1 mb-0">{{ selectedWork.client }}</p>
-                  </div>
-                  <div class="static-caption col-md-2">
-                    <p class="m-0">Tech: </p>
-                  </div>
-                  <div class="information col-md-10">
-                    <p class="ml-1 mb-0">{{ selectedWork.tech }}</p>
-                  </div>
+      <div class="info-container__right col-md-6 d-flex p-0 align-items-center">
+        <div class="container row">
+          <div class="info-container__right__caption__title col-md-12 p-0">
+            <h3 class="mb-0 font-weight-bold">{{ selectedWork.name }}</h3>
+            <small>{{ selectedWork.year }}</small>            
+          </div>
+          <div class="info-container__right__caption" :style="{ width: this.canvasSize.width / 2 + 'px' }">          
+            <div class="info-container__right__caption__detail mt-3">
+              <div class="row d-flex">
+                <div class="static-caption col-md-2">
+                  <p class="m-0">Role: </p>
                 </div>
-
-                <a :href=selectedWork.link target="blank"> more </a> 
+                <div class="information col-md-10">
+                  <p class="ml-1 mb-0">{{ selectedWork.role }}</p>
+                </div>
+                <div class="static-caption col-md-2">
+                  <p class="m-0">Client: </p>
+                </div>
+                <div class="information col-md-10">
+                  <p class="ml-1 mb-0">{{ selectedWork.client }}</p>
+                </div>
+                <div class="static-caption col-md-2">
+                  <p class="m-0">Tech: </p>
+                </div>
+                <div class="information col-md-10">
+                  <p class="ml-1 mb-0">{{ selectedWork.tech }}</p>
+                </div>
               </div>
+
+              <a :href=selectedWork.link target="blank"> more </a> 
             </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- Mobile  -->
-      <div class="info-container m-0 d-block d-md-none">
-        <div class="info-container__left d-flex justify-content-center align-items-center">
-          <img 
-          ref="circle" 
-          class="info-container__left__bg rounded-circle " 
-            :src="require('@/assets/img/' + selectedWork.file + '.png')"
-          alt="coffee">
-        </div>
-        <div class="info-container__right p-0 d-flex align-items-center">
-          <div class="info-container__right__caption mt-5 text-center">
-            <div class="info-container__right__caption__title">
-              <h3 class="mb-0 font-weight-bold">{{ selectedWork.name }}</h3>
-              <small>{{ selectedWork.year }}</small>            
-            </div>
-            <div class="info-container__right__caption__detail">
-              <p class="mt-3 mb-0">Role: {{ selectedWork.role }}</p>
-              <p class="m-0">Client: {{ selectedWork.client }}</p>
-              <p class="mb-2">Tech: {{ selectedWork.tech }}</p>
-              <a :href=selectedWork.link target="blank"> detail </a> 
-            </div>
+    <!-- Mobile  -->
+    <div class="info-container m-0 d-block d-md-none">
+      <div class="info-container__left d-flex justify-content-center align-items-center">
+        <img 
+        ref="circle" 
+        class="info-container__left__bg rounded-circle " 
+          :src="require('@/assets/img/' + selectedWork.file + '.png')"
+        alt="coffee">
+      </div>
+      <div class="info-container__right p-0 d-flex align-items-center">
+        <div class="info-container__right__caption mt-5 text-center">
+          <div class="info-container__right__caption__title">
+            <h3 class="mb-0 font-weight-bold">{{ selectedWork.name }}</h3>
+            <small>{{ selectedWork.year }}</small>            
+          </div>
+          <div class="info-container__right__caption__detail">
+            <p class="mt-3 mb-0">Role: {{ selectedWork.role }}</p>
+            <p class="m-0">Client: {{ selectedWork.client }}</p>
+            <p class="mb-2">Tech: {{ selectedWork.tech }}</p>
+            <a :href=selectedWork.link target="blank"> detail </a> 
           </div>
         </div>
-      </div>      
+      </div>
+    </div>      
   </div>
 </template>
 
@@ -99,6 +99,10 @@ $breakpoint-mobile: 768px;
   }
 }
 
+.info-container {
+  pointer-events: none;
+}
+
 .info-container__right {
   &__caption {
     
@@ -116,8 +120,6 @@ $breakpoint-mobile: 768px;
         font-size: 20px;
       }
     }
-
-    z-index: 10;
 
     &__title {
       color: #f7f3e9;      

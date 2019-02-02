@@ -10,10 +10,6 @@ export default class BasePhysicalPattern {
 
     this.isMobile = false
 
-    // touchstartに対応してたらtouchstart、してなければclick
-    const mytap = window.ontouchstart === null ? 'touchstart' : 'click'
-    // canvas.addEventListener(mytap, this.callbackOnClick.bind(this))
-
     // NOTE: Local setting
     this.animationId = 0
     this.creationTimerId = 0
@@ -22,7 +18,12 @@ export default class BasePhysicalPattern {
     this.wordDataList = []
     this.screenWidth = canvas.width
     this.screenHeight = canvas.height
-    this.delegate = undefined
+    this.delegate = undefined    
+
+    this.mouse = Matter.Mouse.create(this.canvas)
+    // touchstartに対応してたらtouchstart、してなければclick
+    const mytap = window.ontouchstart === null ? 'touchstart' : 'mousedown'    
+    this.canvas.addEventListener(mytap, this.callbackOnClick.bind(this), false)
 
     this.fontList = [
       'sans-serif',
@@ -63,6 +64,7 @@ export default class BasePhysicalPattern {
   }
 
   initialize (data, needBottomBody) {
+    console.log("inititalize")
     this.wordDataList = data
     
     // NOTE: Delete from world if exist
@@ -75,7 +77,7 @@ export default class BasePhysicalPattern {
     const Events = Matter.Events
     Events.on(this.engine, 'beforeUpdate', this.matterBeforeUpdate.bind(this))
     Engine.run(this.engine)
-    
+
     this.prepareData(data, needBottomBody)
   }
 
@@ -107,6 +109,7 @@ export default class BasePhysicalPattern {
     const wordData = {}
     wordData.word = data[index][0]
     wordData.size = val
+    wordData.link = data[index][2]
     wordData.color = color
 
     const isTopBody = needBottomBody ? Math.floor(Math.random() * 2) === 0 : true
@@ -125,10 +128,17 @@ export default class BasePhysicalPattern {
   }
 
   stopAnimation () {
+    // touchstartに対応してたらtouchstart、してなければclick
+    const mytap = window.ontouchstart === null ? 'touchstart' : 'click'
+    console.log(mytap)
+    this.canvas.removeEventListener(mytap, this.callbackOnClick, false)
+
     // NOTE: Stop rendering
     window.cancelAnimationFrame(this.animationId)
     window.clearTimeout(this.creationTimerId)
-    // Events.on(this.engine, 'beforeUpdate', this.matterBeforeUpdate.bind(this))
+
+    Matter.Mouse.clearSourceEvents(this.mouse)
+    console.log("stopanimation")
   }
 
   matterBeforeUpdate (event) {}
@@ -161,7 +171,6 @@ export default class BasePhysicalPattern {
           content = part.render.text.content
         }
 
-        this.context.fillStyle = 'black'
         this.context.save()
         this.context.translate(part.position.x, part.position.y)
 
@@ -171,7 +180,16 @@ export default class BasePhysicalPattern {
         this.context.rotate(radian)
         this.context.textBaseline = 'middle'
         this.context.textAlign = 'center'
-        this.context.fillStyle = color
+
+        if (part.render.text && part.render.text.link.length > 1) {
+          // #b8be96
+          // #a98667      
+          this.context.fillStyle = '#6a3906'
+        } else {
+          this.context.fillStyle = color
+        }
+  
+        // this.context.fillStyle = color
         this.context.font = fontsize + 'px ' + fontfamily
 
         if (part.render.text.isVertical) {
@@ -256,7 +274,8 @@ export default class BasePhysicalPattern {
             size: wordData.size,
             isVertical: isVertical,
             color: wordData.color,
-            family: fontName
+            family: fontName,
+            link: wordData.link
           }
         }
       })
@@ -272,10 +291,12 @@ export default class BasePhysicalPattern {
     if (query.length > 0) {
       const part = query[0]
 
-      if (part.render.text) {
+      if (part.render.text && part.render.text.link.length > 1) {
         const info = {
-          word: part.render.text.content
+          word: part.render.text.content,
+          link: part.render.text.link
         }
+        console.log(part.render.text.content)
 
         if (this.delegate !== undefined) {
           this.delegate(info)
@@ -288,7 +309,14 @@ export default class BasePhysicalPattern {
     // NOTE: Draw rectangle
     this.context.beginPath()
     var vertices = body.vertices
-    this.context.fillStyle = body.isStatic ? '#ff000000' : '#231815'
+
+    if (body.render.text && body.render.text.link.length > 1) {
+        // #b8be96
+        // #a98667      
+      this.context.fillStyle = body.isStatic ? '#ff000000' : '#fbdbd4'
+    } else {
+      this.context.fillStyle = body.isStatic ? '#ff000000' : '#231815'
+    }
 
     this.context.moveTo(vertices[0].x, vertices[0].y)
     for (var j = 1; j < vertices.length; j += 1) {
@@ -301,7 +329,6 @@ export default class BasePhysicalPattern {
     if (body.isStatic) {
       this.context.strokeStyle = this.isDebug ? '#0000ff' : '#00ff0000'
     } else {
-      this.context.strokeStyle = this.isDebug ? '#00ff00' : '#0000ff00'
     }
     this.context.stroke()
     this.context.fill()

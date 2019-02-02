@@ -55,7 +55,13 @@ export default {
   methods: {
 
     onWordClick (info) {
-      NativeCommunicator.postWordData(info)
+      // NOTE: Navigate to site with info.link
+      // open( info.link, "_blank" );
+      // location.href(info.link)
+      window.open("http://google.com", '_system');
+// navigator.app.loadUrl("http://google.com", {openExternal : true});
+
+      // NativeCommunicator.postWordData(info)
     },
     onClickWork (work) {
       this.loadData(work.file)
