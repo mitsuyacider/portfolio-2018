@@ -26,7 +26,7 @@ export default {
 <style lang="scss">
 
 .nav-container {
-  height: 56;
+  height: 56px;
 }
 
 .works-container {

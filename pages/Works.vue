@@ -57,13 +57,14 @@ export default {
     onWordClick (info) {
       console.log("works.vue : onclick: " + info.link)
       // NOTE: Navigate to site with info.link
-      // 
-
       var ua = navigator.userAgent;
       if (ua.indexOf('iPhone') > 0 || 
           ua.indexOf('Android') > 0 && 
           ua.indexOf('Mobile') > 0) {
-          // スマートフォン用コード
+        // スマートフォン用コード
+
+        // this.$refs.pattern.initialize(data)
+        this.$refs.pattern.destroy()
         const a = document.createElement('a')
         a.setAttribute('href', info.link)
         var dispatch = document.createEvent("HTMLEvents");

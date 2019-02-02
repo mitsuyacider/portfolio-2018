@@ -106,6 +106,7 @@ $breakpoint-mobile: 768px;
 .info-container__right {
   &__caption {
     
+    z-index: 10;
     @include min-screen($breakpoint-tablet) {
       width: 350px; 
       font-size: 1.2em;
@@ -228,7 +229,9 @@ export default {
       canvas.height = this.screenHeight
 
       if (window.innerWidth <= 768) {
-        this.screenHeight = (screen.height - 54) * 2
+        // this.screenHeight = (screen.height - 56) * 2
+        this.screenHeight = (window.innerHeight - 56) * 2
+        canvas.height = this.screenHeight        
       }   
 
       if (this.gravityPattern !== undefined) {
@@ -244,6 +247,9 @@ export default {
     callbackOnClick (info) {
       info.type = 3
       this.$emit('callbackOnWordClick', info)
+    },
+    destroy () {
+      this.gravityPattern.stopAnimation()
     }
   },
   computed: {

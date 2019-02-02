@@ -323,7 +323,7 @@ export default class BasePhysicalPattern {
 
     this.context.lineWidth = 1.5
     if (body.isStatic) {
-      this.context.strokeStyle = this.isDebug ? '#0000ff' : '#00ff0000'
+      this.context.strokeStyle = this.isDebug ? '#0000ff' : '#00ff00'
     } else {
     }
     this.context.stroke()
