@@ -56,7 +56,7 @@ export default {
 
     onWordClick (info) {
       // NOTE: Navigate to site with info.link
-      window.open("http://google.com", '_system');
+      window.open(info.link, '_system');
     },
     onClickWork (work) {
       this.loadData(work.file)
