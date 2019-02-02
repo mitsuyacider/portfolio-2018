@@ -144,8 +144,8 @@ $breakpoint-mobile: 768px;
         text-decoration: underline solid #a98667;
       }
       >a:hover {
-        color: #01cf9c;
-        text-decoration: underline solid #01cf9c;        
+        color: #24A2B6;
+        text-decoration: underline solid #24A2B6;        
       }
     }
   }
