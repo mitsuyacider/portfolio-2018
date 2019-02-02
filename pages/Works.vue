@@ -55,8 +55,26 @@ export default {
   methods: {
 
     onWordClick (info) {
+      console.log("works.vue : onclick: " + info.link)
       // NOTE: Navigate to site with info.link
-      window.open(info.link, '_system');
+      // 
+
+      var ua = navigator.userAgent;
+      if (ua.indexOf('iPhone') > 0 || 
+          ua.indexOf('Android') > 0 && 
+          ua.indexOf('Mobile') > 0) {
+          // スマートフォン用コード
+        const a = document.createElement('a')
+        a.setAttribute('href', info.link)
+        var dispatch = document.createEvent("HTMLEvents");
+        dispatch.initEvent("click", true, true);
+        a.dispatchEvent(dispatch);
+      } else if (ua.indexOf('iPad') > 0 || ua.indexOf('Android') > 0) {
+          // タブレット用コード
+      } else {
+          // PC用コード
+          window.open(info.link);
+      }
     },
     onClickWork (work) {
       this.loadData(work.file)
