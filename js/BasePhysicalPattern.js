@@ -64,7 +64,6 @@ export default class BasePhysicalPattern {
   }
 
   initialize (data, needBottomBody) {
-    console.log("inititalize")
     this.wordDataList = data
     
     // NOTE: Delete from world if exist
@@ -130,7 +129,6 @@ export default class BasePhysicalPattern {
   stopAnimation () {
     // touchstartに対応してたらtouchstart、してなければclick
     const mytap = window.ontouchstart === null ? 'touchstart' : 'click'
-    console.log(mytap)
     this.canvas.removeEventListener(mytap, this.callbackOnClick, false)
 
     // NOTE: Stop rendering
@@ -138,7 +136,6 @@ export default class BasePhysicalPattern {
     window.clearTimeout(this.creationTimerId)
 
     Matter.Mouse.clearSourceEvents(this.mouse)
-    console.log("stopanimation")
   }
 
   matterBeforeUpdate (event) {}
@@ -296,7 +293,6 @@ export default class BasePhysicalPattern {
           word: part.render.text.content,
           link: part.render.text.link
         }
-        console.log(part.render.text.content)
 
         if (this.delegate !== undefined) {
           this.delegate(info)

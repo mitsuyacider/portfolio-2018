@@ -56,12 +56,7 @@ export default {
 
     onWordClick (info) {
       // NOTE: Navigate to site with info.link
-      // open( info.link, "_blank" );
-      // location.href(info.link)
       window.open("http://google.com", '_system');
-// navigator.app.loadUrl("http://google.com", {openExternal : true});
-
-      // NativeCommunicator.postWordData(info)
     },
     onClickWork (work) {
       this.loadData(work.file)
@@ -76,7 +71,12 @@ export default {
       })
     }
   },
-  computed: {
+  watch: {
+    '$store.state.selectedWork' : function (newVal, oldVal) {
+      if (newVal !== oldVal) {
+        this.loadData(newVal.file)     
+      }
+    }
   }
 }
 </script>
