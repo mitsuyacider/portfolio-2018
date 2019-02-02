@@ -113,7 +113,9 @@ export default class BasePhysicalPattern {
     wordData.link = data[index][2]
     wordData.color = color
 
-    const isTopBody = needBottomBody ? Math.floor(Math.random() * 2) === 0 : true
+
+    const propotion = this.isMobile ? 5 : 2
+    const isTopBody = needBottomBody ? Math.floor(Math.random() * propotion) === 0 : true
     const wordBody = this.createWordBody(wordData, isTopBody)
     const angle = Math.floor(Math.random() * 20) - 10
     const radian = angle * ( Math.PI / 180 )

@@ -113,7 +113,7 @@ export default class MultiGravityPattern extends BasePhysicalPattern {
     const Body = Matter.Body
     for (let i = 0; i < this.bottomBodyList.length; i++) {
       const wordBody = this.bottomBodyList[i]
-      Body.setVelocity(wordBody, {x: 0, y: -1.5})
+      Body.setVelocity(wordBody, {x: 0, y: -1.3})
     }
 
     if (this.shouldExpand) {

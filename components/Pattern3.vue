@@ -42,7 +42,7 @@
                 </div>
               </div>
 
-              <a :href=selectedWork.link target="blank"> more </a> 
+              <a class="detail-target" :href=selectedWork.link target="blank"> more </a> 
             </div>
           </div>
         </div>
@@ -68,7 +68,7 @@
             <p class="mt-3 mb-0">Role: {{ selectedWork.role }}</p>
             <p class="m-0">Client: {{ selectedWork.client }}</p>
             <p class="mb-2">Tech: {{ selectedWork.tech }}</p>
-            <a :href=selectedWork.link target="blank"> detail </a> 
+            <a class="detail-target" :href=selectedWork.link target="blank"> more </a> 
           </div>
         </div>
       </div>
@@ -103,6 +103,10 @@ $breakpoint-mobile: 768px;
   pointer-events: none;
 }
 
+.detail-target {
+  pointer-events: auto;
+}
+
 .info-container__right {
   &__caption {
     
@@ -114,7 +118,7 @@ $breakpoint-mobile: 768px;
 
     @include max-screen($breakpoint-mobile) {
       font-size: 1.0em;
-      width: 300px; 
+      width: 400px; 
       margin: 0 auto;
 
       h3 {
@@ -128,7 +132,7 @@ $breakpoint-mobile: 768px;
 
     &__detail {
       color: #f7f3e9;
-      width: 300px;
+      width: 400px;
 
       >a {
         color: #a98667;
