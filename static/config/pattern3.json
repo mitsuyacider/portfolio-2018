@@ -3,10 +3,10 @@
   "restitution": 0.9,
   "friction": 0.01,
   "density": 1,
-  "frictionAir": 0,
+  "frictionAir": 0.5,
   "isDebug": false,
-  "resetInterval": 15000,
-  "expandRate": 1.021,
+  "resetInterval": 35000,
+  "expandRate": 1.005,
   "maxFontSize": 120,
   "minFontSize": 48,
   "minColor": 170

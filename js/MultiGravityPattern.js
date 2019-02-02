@@ -109,7 +109,7 @@ export default class MultiGravityPattern extends BasePhysicalPattern {
     const Body = Matter.Body
     for (let i = 0; i < this.bottomBodyList.length; i++) {
       const wordBody = this.bottomBodyList[i]
-      Body.setVelocity(wordBody, {x: 0, y: -3})
+      Body.setVelocity(wordBody, {x: 0, y: -1.5})
     }
 
     if (this.shouldExpand) {
@@ -118,7 +118,7 @@ export default class MultiGravityPattern extends BasePhysicalPattern {
       Body.scale(this.staticCircle, this.expandRate, this.expandRate)
 
       const maxRadius = Math.sqrt(Math.pow(this.screenWidth / 2, 2) + Math.pow(this.screenHeight / 2, 2))
-      if (this.staticCircle.circleRadius > maxRadius * 4) {
+      if (this.staticCircle.circleRadius > maxRadius * 8) {
         this.shouldExpand = false
 
         this.stopAnimation()
