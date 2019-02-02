@@ -5,7 +5,7 @@ import config from '@/static/config/pattern3.json'
 export default class MultiGravityPattern extends BasePhysicalPattern {
   constructor (canvas) {
     super(canvas)
-    this.shouldExpand = false
+    // this.shouldExpand = false
     this.expandRate = 1.108
     this.staticCircle = {}
     this.rightWall = {}
@@ -48,6 +48,7 @@ export default class MultiGravityPattern extends BasePhysicalPattern {
   }
 
   initialize (data, size) {
+    this.shouldExpand = false
     const needBottomBody = true
 
     let x = 0
@@ -79,6 +80,9 @@ export default class MultiGravityPattern extends BasePhysicalPattern {
                                       this.circleSize, 
                                       {
                                         isStatic: true,
+                                        render: {
+                                          name: 'circle'
+                                        }
                                       })
     World.add(this.engine.world, [upWall, this.ground, leftWall, this.rightWall, this.staticCircle])
 

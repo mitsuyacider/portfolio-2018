@@ -1,5 +1,6 @@
 import MathUtils from '@/js/MathUtils'
 import Matter from 'matter-js'
+import { timingSafeEqual } from 'crypto';
 
 export default class BasePhysicalPattern {
   constructor (canvas) {
@@ -9,6 +10,7 @@ export default class BasePhysicalPattern {
     this.canvas.style.height = String(canvas.height / 2) + 'px'
 
     this.isMobile = false
+    this.shouldExpand = false
 
     // NOTE: Local setting
     this.animationId = 0
@@ -65,7 +67,7 @@ export default class BasePhysicalPattern {
 
   initialize (data, needBottomBody) {
     this.wordDataList = data
-    
+    this.shouldExpand = false
     // NOTE: Delete from world if exist
     this.deleteAllBodyData()
 
@@ -113,6 +115,9 @@ export default class BasePhysicalPattern {
 
     const isTopBody = needBottomBody ? Math.floor(Math.random() * 2) === 0 : true
     const wordBody = this.createWordBody(wordData, isTopBody)
+    const angle = Math.floor(Math.random() * 20) - 10
+    const radian = angle * ( Math.PI / 180 )
+    Matter.Body.rotate(wordBody, radian)
     World.add(this.engine.world, wordBody)
 
     if (isTopBody) {
@@ -322,9 +327,10 @@ export default class BasePhysicalPattern {
     this.context.closePath()
 
     this.context.lineWidth = 1.5
-    if (body.isStatic) {
-      this.context.strokeStyle = this.isDebug ? '#0000ff' : '#00ff00'
+    if (body.isStatic && body.render.name === 'circle' && this.shouldExpand) {
+      this.context.strokeStyle = this.isDebug ? '#0000ff' : '#b8be96'
     } else {
+      this.context.strokeStyle = '#00ff0000'
     }
     this.context.stroke()
     this.context.fill()
