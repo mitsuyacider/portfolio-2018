@@ -14,16 +14,36 @@
         </div>
 
         <div class="info-container__right col-md-6 d-flex p-0 align-items-center">
-          <div class="info-container__right__caption col-md-6" :style="{ width: this.canvasSize.width / 2 + 'px' }">          
-            <div class="info-container__right__caption__title">
+          <div class="container row">
+            <div class="info-container__right__caption__title col-md-12 p-0">
               <h3 class="mb-0 font-weight-bold">{{ selectedWork.name }}</h3>
               <small>{{ selectedWork.year }}</small>            
             </div>
-            <div class="info-container__right__caption__detail">
-              <p class="mt-3 mb-0">Role: {{ selectedWork.role }}</p>
-              <p class="m-0">Client: {{ selectedWork.client }}</p>
-              <p class="mb-2">Tech: {{ selectedWork.tech }}</p>
-              <a :href=selectedWork.link target="blank"> more </a> 
+            <div class="info-container__right__caption" :style="{ width: this.canvasSize.width / 2 + 'px' }">          
+              <div class="info-container__right__caption__detail mt-3">
+                <div class="row d-flex">
+                  <div class="static-caption col-md-2">
+                    <p class="m-0">Role: </p>
+                  </div>
+                  <div class="information col-md-10">
+                    <p class="ml-1 mb-0">{{ selectedWork.role }}</p>
+                  </div>
+                  <div class="static-caption col-md-2">
+                    <p class="m-0">Client: </p>
+                  </div>
+                  <div class="information col-md-10">
+                    <p class="ml-1 mb-0">{{ selectedWork.client }}</p>
+                  </div>
+                  <div class="static-caption col-md-2">
+                    <p class="m-0">Tech: </p>
+                  </div>
+                  <div class="information col-md-10">
+                    <p class="ml-1 mb-0">{{ selectedWork.tech }}</p>
+                  </div>
+                </div>
+
+                <a :href=selectedWork.link target="blank"> more </a> 
+              </div>
             </div>
           </div>
         </div>
@@ -48,7 +68,7 @@
               <p class="mt-3 mb-0">Role: {{ selectedWork.role }}</p>
               <p class="m-0">Client: {{ selectedWork.client }}</p>
               <p class="mb-2">Tech: {{ selectedWork.tech }}</p>
-              <a :href=selectedWork.link target="blank"> more </a> 
+              <a :href=selectedWork.link target="blank"> detail </a> 
             </div>
           </div>
         </div>
@@ -105,11 +125,10 @@ $breakpoint-mobile: 768px;
 
     &__detail {
       color: #f7f3e9;
+      width: 300px;
 
       >a {
         color: #a98667;
-        // #b8be96
-        // #a98667
         text-decoration: underline solid #a98667;
       }      
     }
