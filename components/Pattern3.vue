@@ -201,7 +201,7 @@ export default {
       let circleSize
       const circle = document.getElementsByClassName('info-container__left__bg')      
       if (window.innerWidth <= 768) {
-        this.screenHeight = (screen.height - 94) * 2
+        this.screenHeight = (screen.height - 54) * 2
         circleSize = this.$refs.circle.clientWidth
       } else {
         circleSize = circle[0].clientWidth
@@ -226,6 +226,11 @@ export default {
       const circleSize = this.getCircleSize()
       canvas.width = this.screenWidth
       canvas.height = this.screenHeight
+
+      if (window.innerWidth <= 768) {
+        this.screenHeight = (screen.height - 54) * 2
+      }   
+
       if (this.gravityPattern !== undefined) {
         this.gravityPattern.stopAnimation()
         this.gravityPattern.deleteAllBodyData()
