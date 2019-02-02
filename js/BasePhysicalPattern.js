@@ -356,17 +356,12 @@ export default class BasePhysicalPattern {
         // #a98667      
       isInBody = this.isCursorInBody(body)
       if (isInBody) {
-        this.context.lineWidth = 2.5
         this.context.fillStyle = '#01cf9c'
-        this.context.strokeStyle = '#01cf9c'
       } else {
-        this.context.lineWidth = 10.5
         this.context.fillStyle = body.isStatic ? '#ff000000' : '#fbdbd4'
-        this.context.strokeStyle = '#915673'
       }
     } else {
       this.context.fillStyle = body.isStatic ? '#ff000000' : '#231815'
-      this.context.strokeStyle = '#00ff0000'
     }
 
     this.context.moveTo(vertices[0].x, vertices[0].y)
