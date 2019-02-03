@@ -1,22 +1,9 @@
-# portfolio2018
+# Portfolio 2018
 
-> My stellar Nuxt.js project
+![](assets/img/sample.png)
+My portfolio site is [here](https://www.mitsuyacider.com/)
 
-## Build Setup
-
-``` bash
-# install dependencies
-$ yarn install
-
-# serve with hot reload at localhost:3000
-$ yarn run dev
-
-# build for production and launch server
-$ yarn run build
-$ yarn start
-
-# generate static project
-$ yarn run generate
-```
-
-For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
+## Main Libraries
+* Matter.js
+* Vue.js
+* p5.js
