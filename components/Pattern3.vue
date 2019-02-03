@@ -68,7 +68,7 @@
             <p class="mt-3 mb-0">Role: {{ selectedWork.role }}</p>
             <p class="m-0">Client: {{ selectedWork.client }}</p>
             <p class="mb-2">Tech: {{ selectedWork.tech }}</p>
-            <a class="detail-target" :href=selectedWork.link> more </a> 
+            <a class="detail-target" @click=tappedLink>more</a> 
           </div>
         </div>
       </div>
@@ -211,11 +211,14 @@ export default {
     window.addEventListener('resize', this.handleResize)
   },
   methods: {
+    tappedLink () {      
+      window.open(this.selectedWork.mobileLink, '_system')
+    },
     getCircleSize () {
       let circleSize
       const circle = document.getElementsByClassName('info-container__left__bg')      
       if (window.innerWidth <= 768) {
-        this.screenHeight = (screen.height - 54) * 2
+        this.screenHeight = (window.innerHeight - 54) * 2
         circleSize = this.$refs.circle.clientWidth
       } else {
         circleSize = circle[0].clientWidth

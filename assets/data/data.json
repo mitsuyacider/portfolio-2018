@@ -7,7 +7,8 @@
                   "tech" : "iOS/Android, Sound Analyze",
                   "role" : "Management, Developmet",
                   "client" : "IMAGICA Imageworks, Inc.",
-                  "link" : "https://www.pics.tokyo/works/expo-astana-2017-japan-pavilion/"
+                  "link" : "https://www.pics.tokyo/works/expo-astana-2017-japan-pavilion/",
+                  "mobileLink" : "https://www.pics.tokyo/works/expo-astana-2017-japan-pavilion/"
                 },
                 { 
                   "name" : "Stealth Beacon",
@@ -16,7 +17,8 @@
                   "tech" : "Unity, iBeacon, Sound Recognition, 3D Sound",
                   "role" : "Developmet",
                   "client" : "Gifu Museum",
-                  "link" : "https://www.gifu-np.co.jp/news/20190115/20190115-105810.html?fbclid=IwAR1pn__T4QOGgcASWayKWZ26NAW0xtwVF_7Pob5zejxqvE2bj8bUhE1gl44"
+                  "link" : "https://www.gifu-np.co.jp/news/20190115/20190115-105810.html?fbclid=IwAR1pn__T4QOGgcASWayKWZ26NAW0xtwVF_7Pob5zejxqvE2bj8bUhE1gl44",
+                  "mobileLink" : "https://www.gifu-np.co.jp/news/20190115/20190115-105810.html?fbclid=IwAR1pn__T4QOGgcASWayKWZ26NAW0xtwVF_7Pob5zejxqvE2bj8bUhE1gl44"
                 },
                 { 
                   "name" : "Club360",
@@ -25,7 +27,8 @@
                   "tech" : "Unity, VR",
                   "role" : "Developmet",
                   "client" : "GOCCO., Inc.",
-                  "link" : "http://club360.info/en/"
+                  "link" : "http://club360.info/en/",
+                  "mobileLink" : "http://club360.info/en/"
                 },
                 { 
                   "name" : "Clap Light",
@@ -34,7 +37,8 @@
                   "tech" : "iOS, Camera",
                   "role" : "Developmet",
                   "client" : "Junichi Kanebako(Artist)",
-                  "link" : "http://kanejun.com/works_claplight.html"
+                  "link" : "http://kanejun.com/works_claplight.html",
+                  "mobileLink" : "http://kanejun.com/works_claplight.html"
                 },
                 { 
                   "name" : "banggos",
@@ -43,7 +47,8 @@
                   "tech" : "iOS, Hardware Communication",
                   "role" : "Developmet",
                   "client" : "kaoringMachine(Artist)",
-                  "link" : "https://www.kickstarter.com/projects/873660033/banggos-electric-sexy-drum-pants"
+                  "link" : "https://www.kickstarter.com/projects/873660033/banggos-electric-sexy-drum-pants",
+                  "mobileLink" : "https://www.kickstarter.com/projects/873660033/banggos-electric-sexy-drum-pants"
                 }
               ],
   "web" : [
@@ -54,7 +59,8 @@
                   "tech" : "Vue.js, canvas animation",
                   "role" : "Developmet",
                   "client" : "TOPPAN PRINTING CO., LTD.",
-                  "link" : "http://mediaarts-asuka-kashihara.com/"
+                  "link" : "http://mediaarts-asuka-kashihara.com/",
+                  "mobileLink" : "http://mediaarts-asuka-kashihara.com/"
                 },
                 {
                   "name" : "Machikon",
@@ -63,7 +69,8 @@
                   "tech" : "Vue.js, Bluetooth",
                   "role" : "Developmet",
                   "client" : "Kutami, Inc.",
-                  "link" : "under construction"
+                  "link" : "https://sandbox.gocco.co.jp/machikon/#/walk-through",
+                  "mobileLink" : "https://sandbox.gocco.co.jp/machikon/#/walk-through"
                 },
                 {
                   "name" : "segatubers",
@@ -72,7 +79,8 @@
                   "tech" : "Vue.js, Express, Node.js, image processing",
                   "role" : "Developmet",
                   "client" : "SEGA ENTERTAINMENT Co. Ltd.",
-                  "link" : "https://segatubers.com/"
+                  "link" : "https://segatubers.com/",
+                  "mobileLink" : "https://segatubers.com/"
                 },
                 {
                   "name" : "Ningen-Tetris",
@@ -81,7 +89,8 @@
                   "tech" : "Vue.js, TensorFlow PoseNet",
                   "role" : "Developmet",
                   "client" : "Personal",
-                  "link" : "https://ningen-tetris.herokuapp.com"
+                  "link" : "https://ningen-tetris.herokuapp.com",
+                  "mobileLink" : "https://github.com/mitsuyacider/ningen-tetris"
                 }
               ],
   "r_d" : [
@@ -101,7 +110,8 @@
                   "tech" : "Vue.js, TensorFlow PoseNet",
                   "role" : "Developmet, hardware",
                   "client" : "Gifu City",
-                  "link" : "https://vimeo.com/163784349"
+                  "link" : "https://vimeo.com/163784349",
+                  "mobileLink" : "https://vimeo.com/163784349"
                 },
                 {
                   "name" : "xmas-fireworks",
@@ -110,7 +120,8 @@
                   "tech" : "Vue.js, TensorFlow PoseNet",
                   "role" : "Developmet",
                   "client" : "Personal",
-                  "link" : "https://xmas-fireworks.herokuapp.com"
+                  "link" : "https://xmas-fireworks.herokuapp.com",
+                  "mobileLink" : "https://github.com/mitsuyacider/xmas-fireworks"
                 }
               ],
   "tmp" : [

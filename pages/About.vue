@@ -9,7 +9,7 @@
     <div class="container right-container col-md-6 p-4">
       <h2>Mitsuya WATANABE</h2>
       <p class="right-container__passage text-justify mt-5">
-         I am IMitusya Watanabe from Japan. 
+         I am Mitsuya Watanabe from Japan. 
          I am working as a Web & Mobile Application Developer 
          at <a href="https://gocco.co.jp/">GOCCO.</a>
       </p>

@@ -50,7 +50,7 @@ export default {
   mounted () {    
     this.canvasSize.width = this.$refs.project.clientWidth
     this.canvasSize.height = this.$refs.project.clientHeight
-    this.loadData('mediaart')
+    this.loadData(this.$store.state.selectedWork.file)
   },
   methods: {
 
@@ -61,15 +61,10 @@ export default {
           ua.indexOf('Android') > 0 && 
           ua.indexOf('Mobile') > 0) {
         // スマートフォン用コード
-
-        // this.$refs.pattern.initialize(data)
         this.$refs.pattern.destroy()
-        const a = document.createElement('a')
-        a.setAttribute('href', info.link)
-        a.setAttribute('target', '_blank')
-        const dispatch = document.createEvent("HTMLEvents");
-        dispatch.initEvent("click", true, true);
-        a.dispatchEvent(dispatch);
+
+        // NOTE: Need unlock popup window in settings
+        window.open(info.link, '_system')
       } else if (ua.indexOf('iPad') > 0 || 
                  ua.indexOf('Android') > 0) {
           // タブレット用コード
