@@ -7,7 +7,17 @@
       <div class="canvas-container" id="p5Canvas"></div>
     </div>
     <div class="container right-container col-md-6 p-4">
-      <h2>Mitsuya WATANABE</h2>
+      <div class="header">
+        <h3>Mitsuya WATANABE</h3>
+        <div class="social-icon-container d-flex align-items-center">
+          <a href="https://github.com/mitsuyacider" target="_blank"><img src="~/assets/img/github.svg"></a>
+          <a href="https://www.linkedin.com/in/mitsuya-watanabe" target="_blank"><img src="~/assets/img/linkedin.svg"></a>
+          <a href="https://www.npmjs.com/~mitsuyacider" target="_blank"><img src="~/assets/img/npm.png"></a>
+          <a href="https://www.instagram.com/shinonome.cinnamon/" target="_blank"><img src="~/assets/img/instagram.svg"></a>
+          <a href="https://medium.com/@mitsuyawatanabe" target="_blank"><img src="~/assets/img/medium.svg"></a>
+  
+        </div>        
+      </div>
       <p class="right-container__passage">
         Thanks for taking time to learn about me.
         I am  a reliable senior Frontend expert with 8 years of proven experience.
@@ -47,13 +57,6 @@
       <p class="right-container__passage mt-3">
         See you then!!!
       </p>
-      <div class="social-icon-container d-flex align-items-center mt-5">
-        <a href="https://github.com/mitsuyacider" target="_blank"><img src="~/assets/img/github.svg"></a>
-        <a href="https://www.linkedin.com/in/mitsuya-watanabe" target="_blank"><img src="~/assets/img/linkedin.svg"></a>
-        <a href="https://www.npmjs.com/~mitsuyacider" target="_blank"><img src="~/assets/img/npm.png"></a>
-        <a href="https://www.instagram.com/shinonome.cinnamon/" target="_blank"><img src="~/assets/img/instagram.svg"></a>
-        
-      </div>
     </div>
   </div>
 </div>
@@ -61,8 +64,15 @@
 
 <style lang="scss" scoped>
 .right-container {  
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+  }
+
   &__passage {
-    font-size: 1.1em;
+    font-size: 0.9em;
     // color:white;
     // background-color: black;
   }
@@ -110,8 +120,11 @@ export default {
 }
 
 .social-icon-container {
+  a {
+    margin-right: 4px;
+  }
   img {
-    max-width: 50px;
+    max-width: 20px;
   }
 }
 </style>
