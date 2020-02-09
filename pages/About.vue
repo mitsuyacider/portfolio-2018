@@ -8,36 +8,51 @@
     </div>
     <div class="container right-container col-md-6 p-4">
       <h2>Mitsuya WATANABE</h2>
-      <p class="right-container__passage text-justify mt-5">
-         I am Mitsuya Watanabe from Japan. 
-         I am working as a Web & Mobile Application Developer 
-         at <a href="https://gocco.co.jp/">GOCCO.</a>
+      <p class="right-container__passage">
+        Thanks for taking time to learn about me.
+        I am  a reliable senior Frontend expert with 8 years of proven experience.
+        I am quite proficient in Web and Mobile Frontend development.
+
+        Web development
       </p>
-      <p class="right-container__passage text-justify">
-        I have engaged in system development centered on iOS 
-        and developed applications combined with cutting-edge technologies 
-        such as Bluetooth/iBeacon, voice recognition, ARKit and machine learning. 
-        I have, therefore, deep knowledge and experiences with the innovative use of 
-        technology. Furthermore, in recent years, development on the web applications 
-        has also been entrusted.
+
+      <p class="right-container__passage">
+        - HTML/CSS/Javascript/jQuery <br>
+        - React js/Redux, Vue js/Veux/Vuetify<br>
+        - Github/Gitlab/Bitbucket<br>
+        - Mobile app development<br>
+        - React Native/Ionic/Xamarin/Flutter
       </p>
-      <p class="right-container__passage text-justify">
+
+      <p class="right-container__passage">
+        All these are waiting for you and these will certainly help you get success in your business.
+        I only focus on the success and your satisfaction.
+        As a relentless learner and challenge enjoyer , I always keep can-do attitude and there is nothing impossible to me.
+        All you need to do is just to tell me your dreams.
+        If you want to have a great success in your project and business, it would be a nice choice to work with an honest, dedicated and skilful full stack developer like me.
+        And that's why I am here with you.
+        Best Regards.
+      </p>
+      <p class="right-container__passage">
         Since I have precise insights about the advantage and disadvantage 
         between web applications and mobile applications, I could present optimal 
         solutions considering system construction and usability at fast-paced development 
         to your team.
       </p>
-      <p class="right-container__passage text-justify">
+      <p class="right-container__passage">
         If you are interested in my skills, feel free to send a message 
         to <a href="mailto:mitsuya.watanabe85@gmail.com">mitsuya.watanabe85@gmail.com</a>.
       </p>
 
-      <p class="right-container__passage text-justify mt-3">
+      <p class="right-container__passage mt-3">
         See you then!!!
       </p>
-      <div class="social-icon-container d-md-flex mt-5">
+      <div class="social-icon-container d-flex align-items-center mt-5">
         <a href="https://github.com/mitsuyacider" target="_blank"><img src="~/assets/img/github.svg"></a>
         <a href="https://www.linkedin.com/in/mitsuya-watanabe" target="_blank"><img src="~/assets/img/linkedin.svg"></a>
+        <a href="https://www.npmjs.com/~mitsuyacider" target="_blank"><img src="~/assets/img/npm.png"></a>
+        <a href="https://www.instagram.com/shinonome.cinnamon/" target="_blank"><img src="~/assets/img/instagram.svg"></a>
+        
       </div>
     </div>
   </div>
@@ -92,5 +107,11 @@ export default {
 
 .about-container {
   height: calc(100vh - 56px);
+}
+
+.social-icon-container {
+  img {
+    max-width: 50px;
+  }
 }
 </style>
