@@ -25,6 +25,13 @@ export default {
 
 <style lang="scss">
 
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 .nav-container {
   height: 56px;
 }
