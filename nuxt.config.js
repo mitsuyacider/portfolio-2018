@@ -21,6 +21,9 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
+  generate: {
+    dir:'./docs'
+  },
 
   /*
   ** Customize the progress-bar color
@@ -47,7 +50,9 @@ module.exports = {
     // Doc: https://bootstrap-vue.js.org/docs/
     ['bootstrap-vue/nuxt', { css: false }]
   ],
-
+  router: {
+    base: process.env.NODE_ENV === 'dev' ? '/' : '/portfolio-2018/'
+  },
   /*
   ** Build configuration
   */
@@ -56,7 +61,10 @@ module.exports = {
     ** You can extend webpack config here
     */
     extend(config, ctx) {
-      
-    }
+      if (!ctx.isDev) {
+        config.output.publicPath = './_nuxt/'
+      }
+    },
+
   }
 }
